@@ -1,0 +1,8 @@
+---
+- name: Provision 'Dylan M Taylor' to new CentOS 7 server
+  hosts: dylanmtaylor-server
+  remote_user: root
+
+  tasks:
+    - include: 'tasks/nginx/install.yml'
+    - include: 'tasks/utilities/install.yml'
