@@ -12,3 +12,9 @@
 
   - name: Start the nginx service (and enable it at boot time)
     service: name=nginx state=started enabled=yes
+
+  - name: nginx sites-available directory
+    file: path=/etc/nginx/sites-available state=directory mode=0755
+
+  - name: nginx sites-enabled directory
+    file: path=/etc/nginx/sites-enabled state=directory mode=0755

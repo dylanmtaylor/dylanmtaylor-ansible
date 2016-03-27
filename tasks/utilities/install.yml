@@ -67,5 +67,8 @@
     args:
       creates: /usr/local/bin/jekyll
 
+  - name: Remove immutable bit from /usr/lib/udev/rules.d/60-net.rules
+    command: chattr -i /usr/lib/udev/rules.d/60-net.rules
+
   - name: Upgrade all installed packages
     yum: name=* state=latest
