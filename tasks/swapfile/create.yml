@@ -13,6 +13,6 @@
       creates: /opt/swap/formatted
 
   - shell: echo "/swapfile   swap    swap    sw  0   0" >> /etc/fstab; touch /opt/swap/fstab
-    name: format swap file
+    name: add /swapfile to the /etc/fstab file
     args:
       creates: /opt/swap/fstab
