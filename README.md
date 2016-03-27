@@ -10,7 +10,7 @@ First, make sure that there are no errant entries in ~/.ssh/known_hosts (or set 
 
 Install the latest ansible package on your system
 
-Setup a \[dylanmtaylor-server\] section in /etc/ansible/hosts with the IP addresses of the system(s) you are deploying to
+Update the \[dylanmtaylor-server\] section in ./hosts with the IP addresses of the system(s) you are deploying to
 
 Run the command ansible-playbook playbook.yml
 
