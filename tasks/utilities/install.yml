@@ -61,6 +61,8 @@
 
   - name: Install jekyll using rubygems
     command: gem install jekyll
+    args:
+      creates: /usr/local/bin/jekyll
 
   - name: Upgrade all installed packages
     yum: name=* state=latest
