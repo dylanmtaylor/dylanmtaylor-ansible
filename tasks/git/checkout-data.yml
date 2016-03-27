@@ -1,0 +1,9 @@
+---
+  - name: Delete existing nginx server files
+    file: path=/usr/share/nginx/html/ state=absent
+  - name: Checkout latest version of website files from github
+    git: repo=https://github.com/dylanmtaylor/dylanmtaylor.github.io.git
+         dest=/usr/share/nginx/html/
+         version=HEAD
+         update=yes
+

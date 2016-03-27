@@ -7,3 +7,4 @@
     - include: 'tasks/user/setup.yml'
     - include: 'tasks/nginx/install.yml'
     - include: 'tasks/utilities/install.yml'
+    - include: 'tasks/git/checkout-data.yml'
