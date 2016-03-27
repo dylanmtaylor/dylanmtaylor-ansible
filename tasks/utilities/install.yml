@@ -15,3 +15,5 @@
     yum: name=yum-cron state=latest
   - name: Install the package lshw
     yum: name=lshw state=latest
+  - name: Upgrade all installed packages
+    yum: name=* state=latest

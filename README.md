@@ -6,6 +6,6 @@ I'm trying to learn ansible, so I decided it would be fun to develop an ansible 
 
 ### How to run this:
 
-Make sure that there are no offending entries in ~/.ssh/known_hosts
+Make sure that there are no offending entries in ~/.ssh/known_hosts (or set StrictHostKeyChecking to no)
 
 ansible-playbook -vvvv playbook.yml
