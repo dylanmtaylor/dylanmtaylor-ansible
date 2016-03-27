@@ -4,13 +4,6 @@
   remote_user: root
 
   tasks:
-    - name: Copy my public SSH key for root user
-      authorized_key: user=root key="{{ lookup('file', './files/authorized_keys') }}"
-    - name: Add group 'dylan'
-      group: name=dylan state=present
-    - name: Add non-root user 'dylan'
-      user: name=dylan comment="Dylan Taylor" uid=1000 group=dylan
-    - name: Copy my public SSH key for non-root user 'dylan'
-      authorized_key: user=dylan key="{{ lookup('file', './files/authorized_keys') }}"
+    - include: 'tasks/user/setup.yml'
     - include: 'tasks/nginx/install.yml'
     - include: 'tasks/utilities/install.yml'
