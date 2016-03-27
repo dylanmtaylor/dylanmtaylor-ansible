@@ -14,6 +14,9 @@
   - name: Install the package p7zip
     yum: name=p7zip state=latest
 
+  - name: Install the package unzip
+    yum: name=unzip state=latest
+
   - name: Install the package htop
     yum: name=htop state=latest
 
@@ -49,6 +52,9 @@
 
   - name: Install the package ruby-devel
     yum: name=ruby-devel state=latest
+
+  - name: Install the package python-devel
+    yum: name=python-devel state=latest
 
   - name: Install jekyll using rubygems
     command: gem install jekyll
