@@ -1,0 +1,18 @@
+---
+  - command: fallocate -l 5G /swapfile
+    name: allocate a 5 GB swap file at /swapfile
+    args:
+      creates: /swapfile
+
+  - file: path=/swapfile owner=root group=root mode=0600
+    name: set swap file permissions
+
+  - shell: mkswap /swapfile; mkdir -p /opt/swap; touch /opt/swap/formatted; swapon /swapfile
+    name: format swap file and enable it
+    args:
+      creates: /opt/swap/formatted
+
+  - shell: echo "/swapfile   swap    swap    sw  0   0" >> /etc/fstab; touch /opt/swap/fstab
+    name: format swap file
+    args:
+      creates: /opt/swap/fstab
