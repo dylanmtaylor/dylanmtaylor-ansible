@@ -11,6 +11,9 @@
   - name: Install the latest version of php-fpm
     yum: name=php-fpm state=latest
 
+  - name: Write the php configuration file
+    template: src=./files/php.ini dest=/etc/php.ini
+
   - name: Make directory for website contents
     file: path=/var/www/dylanmtaylor.com/html state=directory mode=0755
 
@@ -35,8 +38,8 @@
   - name: Enable all available sites
     shell: find /etc/nginx/sites-available/ -name '*.conf' -type f -exec ln -s {}  /etc/nginx/sites-enabled/ \;
 
-  - name: Start the nginx service (and enable it at boot time)
-    service: name=nginx state=started enabled=yes
+  - name: Retart the nginx service (and enable it at boot time)
+    service: name=nginx state=restarted enabled=yes
 
-  - name: Start the php-fpm service (and enable it at boot time)
-    service: name=php-fpm state=started enabled=yes
+  - name: Retart the php-fpm service (and enable it at boot time)
+    service: name=php-fpm state=restarted enabled=yes
