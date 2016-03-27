@@ -34,8 +34,10 @@
 
   - name: Install the package yum-cron
     yum: name=yum-cron state=latest
+    ignore_errors: yes
 
   - name: Turn automatic update apply on
+    ignore_errors: yes
     replace: dest=/etc/yum/yum-cron.conf
              regexp='apply_updates = no'
              replace='apply_updates = yes'
@@ -43,6 +45,7 @@
 
   - name: Start the yum-cron service (and enable it on boot)
     service: name=yum-cron state=started enabled=yes
+    ignore_errors: yes
 
   - name: Install the package lshw
     yum: name=lshw state=latest
