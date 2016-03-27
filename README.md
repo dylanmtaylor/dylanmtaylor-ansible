@@ -15,5 +15,3 @@ Setup a \[dylanmtaylor-server\] section in /etc/ansible/hosts with the IP addres
 Run the command ansible-playbook playbook.yml
 
 Report any issues here, and I'll consider fixing them
-
-X5F2iwXkJpt1Qf77Z7 198.23.173.50
