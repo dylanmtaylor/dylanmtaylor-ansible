@@ -3,10 +3,6 @@
     yum: name=vim state=latest
   - name: Install the package git
     yum: name=git state=latest
-  - name: Install the package fail2ban
-    yum: name=fail2ban state=latest
-  - name: Start the fail2ban service (and enable it at boot time)
-    service: name=fail2ban state=started enabled=yes
   - name: Install the package htop
     yum: name=htop state=latest
   - name: Install the package iotop

@@ -1,13 +1,14 @@
 ---
 # https://www.digitalocean.com/community/tutorials/how-to-set-up-a-basic-iptables-firewall-on-centos-6
+
+  - name: Uninstall the firewalld service
+    yum: name=firewalld state=removed
+
   - name: Ensure iptables is installed
     yum: name=iptables state=installed
 
   - name: Ensure iptables services are installed
     yum: name=iptables-services state=installed
-
-  - name: Stop the firewalld service (and disable it at boot time)
-    service: name=firewalld state=stopped enabled=no
 
   - name: Start the iptables service (and enable it at boot time)
     service: name=iptables state=started enabled=yes
@@ -28,13 +29,13 @@
     command: iptables -A INPUT -i lo -j ACCEPT
 
   - name: Allow webserver traffic on port 80
-    command: iptables -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+    command: iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 80 -j ACCEPT
 
   - name: Allow webserver traffic on port 443
-    command: iptables -A INPUT -p tcp -m tcp --dport 443 -j ACCEPT
+    command: iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 443 -j ACCEPT
 
   - name: Allow SSH traffic on port 22
-    command: iptables -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
+    command: iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 22 -j ACCEPT
 
   - name: Allow outgoing connections
     command: iptables -I INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
@@ -48,7 +49,9 @@
   - name: Save iptables configuration
     shell: iptables-save > /etc/sysconfig/iptables
 
+  - name: Reload iptables service
+    service: name=iptables state=reloaded
+
   - name: Restart iptables service
     service: name=iptables state=restarted
-
 
