@@ -1,15 +1,30 @@
 ---
+  - name: Install the package curl
+    yum: name=curl state=latest
+
+  - name: Install the package wget
+    yum: name=wget state=latest
+
   - name: Install the package vim
     yum: name=vim state=latest
 
   - name: Install the package git
     yum: name=git state=latest
 
+  - name: Install the package p7zip
+    yum: name=p7zip state=latest
+
   - name: Install the package htop
     yum: name=htop state=latest
 
   - name: Install the package iotop
     yum: name=iotop state=latest
+
+  - name: Install the package nmap
+    yum: name=nmap state=latest
+
+  - name: Install the package telnet
+    yum: name=telnet state=latest
 
   - name: Install the package byobu
     yum: name=byobu state=latest
@@ -18,13 +33,25 @@
     yum: name=yum-cron state=latest
 
   - name: Turn automatic update apply on
-    command: sed -ie 's/apply_updates = no/apply_updates = yes/' /etc/yum/yum-cron.conf
+    replace: dest=/etc/yum/yum-cron.conf
+             regexp='apply_updates = no'
+             replace='apply_updates = yes'
+             backup=yes
 
   - name: Start the yum-cron service (and enable it on boot)
     service: name=yum-cron state=started enabled=yes
 
   - name: Install the package lshw
     yum: name=lshw state=latest
+
+  - name: Install the package gcc
+    yum: name=gcc state=latest
+
+  - name: Install the package ruby-devel
+    yum: name=ruby-devel state=latest
+
+  - name: Install jekyll using rubygems
+    command: gem install jekyll
 
   - name: Upgrade all installed packages
     yum: name=* state=latest
