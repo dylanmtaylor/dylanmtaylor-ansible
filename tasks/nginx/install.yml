@@ -20,5 +20,11 @@
   - name: Nginx sites-enabled directory
     file: path=/etc/nginx/sites-enabled state=directory mode=0755
 
+  - name: Update the configuration files in sites-available
+    synchronize: mode=push src=./files/nginx-sites/ dest=/etc/nginx/sites-available
+
+  - name: Enable all available sites
+    shell: rm -rf /etc/nginx/sites-enabled/*; find /etc/nginx/sites-available/ -name '*.conf' -type f -exec ln -s {}  /etc/nginx/sites-enabled/ \;
+
   - name: Start the nginx service (and enable it at boot time)
     service: name=nginx state=started enabled=yes
