@@ -1,0 +1,7 @@
+---
+  - name: Run the sshd hardening script
+    script: ./files/secure-ssh.sh
+
+  - name: Restart the sshd service (and make sure it's enabled on boot)
+    service: name=crond state=restarted enabled=yes
+

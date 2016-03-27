@@ -5,6 +5,7 @@
 
   tasks:
     - include: 'tasks/user/setup.yml'
+    - include: 'tasks/secure/sshd.yml'
     - include: 'tasks/secure/firewall.yml'
     - include: 'tasks/nginx/install.yml'
     - include: 'tasks/utilities/install.yml'
