@@ -62,10 +62,8 @@
   - name: Install the package python-devel
     yum: name=python-devel state=latest
 
-  - name: Install jekyll using rubygems
-    command: gem install jekyll
-    args:
-      creates: /usr/local/bin/jekyll
+  - name: Install the latest version of jekyll using rubygems
+    gem: name=jekyll state=latest
 
   - name: Remove immutable bit from /usr/lib/udev/rules.d/60-net.rules
     command: chattr -i /usr/lib/udev/rules.d/60-net.rules
