@@ -47,6 +47,9 @@
   - name: Install the package lshw
     yum: name=lshw state=latest
 
+  - name: Install the package sos
+    yum: name=sos state=latest
+
   - name: Install the package gcc
     yum: name=gcc state=latest
 
