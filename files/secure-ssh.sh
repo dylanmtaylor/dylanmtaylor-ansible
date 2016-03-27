@@ -9,6 +9,7 @@ if grep -q ssh-rsa /root/.ssh/authorized_keys; then
         sed -i '/PasswordAuthentication/d' /etc/ssh/sshd_config
         sed -i '/PermitRootLogin/d' /etc/ssh/sshd_config
         sed -i '/RSAAuthentication/d' /etc/ssh/sshd_config
+        sed -i '/RhostsRSAAuthentication/d' /etc/ssh/sshd_config
         sed -i '/PubkeyAuthentication/d' /etc/ssh/sshd_config
         sed -i '/ChallengeResponseAuthentication/d' /etc/ssh/sshd_config
 
