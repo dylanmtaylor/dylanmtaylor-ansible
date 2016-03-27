@@ -2,10 +2,16 @@
 
 ## About this project
 
-I'm trying to learn ansible, so I decided it would be fun to develop an ansible playbook that provisions a functional copy of my site, dylanmtaylor.com. This isn't currently how the site is deployed, but I think it would be nice to have my site provisioned with this in the future. I'm licensing this under the MIT license, feel free to adapt it to your needs if you would like.
+This project is an Ansible playbook that deploys and configures a complete and fully-functional copy of my website, dylanmtaylor.com. This was initially developed in order to teach myself how to use Ansible, but now it is used in order to provision my website. I'm licensing this under the MIT license, so, should you find this useful, feel free to adapt it to your needs if you would like.
 
 ### How to run this:
 
-Make sure that there are no offending entries in ~/.ssh/known_hosts (or set StrictHostKeyChecking to no)
+First, make sure that there are no errant entries in ~/.ssh/known_hosts (or set StrictHostKeyChecking to no)
 
-ansible-playbook -vvvv playbook.yml
+Install the latest ansible package on your system
+
+Setup a \[dylanmtaylor-server\] section in /etc/ansible/hosts with the IP addresses of the system(s) you are deploying to
+
+Run the command ansible-playbook playbook.yml
+
+Report any issues here, and I'll consider fixing them
