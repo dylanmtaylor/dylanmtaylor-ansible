@@ -1,0 +1,10 @@
+---
+  - name: Make directory for apps subdomain contents
+    file: path=/usr/share/nginx/apps.dylanmtaylor.com state=directory mode=0755
+
+  - name: Checkout latest version of apps subdomain files from github
+    git: repo=https://github.com/dylanmtaylor/apps.dylanmtaylor.com.git
+         dest=/usr/share/nginx/apps.dylanmtaylor.com/
+         version=HEAD
+         update=yes
+

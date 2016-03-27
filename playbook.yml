@@ -12,3 +12,6 @@
     - include: 'tasks/git/checkout-data.yml'
     - include: 'tasks/cronjob/configure.yml'
     - include: 'tasks/swapfile/create.yml'
+    - include: 'tasks/subdomains/fwc.yml'
+    - include: 'tasks/subdomains/apps.yml'
+
