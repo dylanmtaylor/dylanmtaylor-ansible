@@ -2,19 +2,23 @@
   - name: Install EPEL repository
     yum: name=epel-release state=latest
 
+  - name: Install the nginx repository
+    yum: name=http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm state=present
+
   - name: Install the latest version of nginx
     yum: name=nginx state=latest
 
-#  - name: Write the nginx configuration file
-#    template: src=nginx.conf.template dest=/etc/nginx/nginx.conf
-#    notify:
-#    - restart nginx
+  - name: Make directory for website contents
+    file: path=/var/www/dylanmtaylor.com/html state=directory mode=0755
+
+  - name: Write the nginx configuration file
+    template: src=./files/nginx.conf dest=/etc/nginx/nginx.conf
+
+  - name: Nginx sites-available directory
+    file: path=/etc/nginx/sites-available state=directory mode=0755
+
+  - name: Nginx sites-enabled directory
+    file: path=/etc/nginx/sites-enabled state=directory mode=0755
 
   - name: Start the nginx service (and enable it at boot time)
     service: name=nginx state=started enabled=yes
-
-  - name: nginx sites-available directory
-    file: path=/etc/nginx/sites-available state=directory mode=0755
-
-  - name: nginx sites-enabled directory
-    file: path=/etc/nginx/sites-enabled state=directory mode=0755

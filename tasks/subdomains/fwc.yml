@@ -1,10 +1,10 @@
 ---
   - name: Make directory for fwc subdomain contents
-    file: path=/usr/share/nginx/fwc.dylanmtaylor.com state=directory mode=0755
+    file: path=/var/www/fwc.dylanmtaylor.com/html state=directory mode=0755
 
   - name: Checkout latest version of fwc subdomain files from github
     git: repo=https://github.com/dylanmtaylor/fwc.dylanmtaylor.com.git
-         dest=/usr/share/nginx/fwc.dylanmtaylor.com/
+         dest=/var/www/fwc.dylanmtaylor.com/html
          version=HEAD
          update=yes
 

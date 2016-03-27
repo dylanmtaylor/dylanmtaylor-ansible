@@ -3,6 +3,6 @@
     service: name=crond state=started enabled=yes
 
   - name: Create cron job to update website contents
-    cron: name="periodically update website contents" minute="*/15" job="cd /usr/share/nginx/html; git pull >/dev/null 2>&1"
+    cron: name="periodically update website contents" minute="*/15" job="cd /var/www/dylanmtaylor.com/html; git pull >/dev/null 2>&1"
 
     

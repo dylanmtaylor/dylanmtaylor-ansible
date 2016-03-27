@@ -1,10 +1,10 @@
 ---
-  - name: Delete existing nginx server files
-    file: path=/usr/share/nginx/html/ state=absent
+  - name: Ensure directory for website exists
+    file: path=/var/www/dylanmtaylor.com/html state=directory
 
   - name: Checkout latest version of website files from github
     git: repo=https://github.com/dylanmtaylor/dylanmtaylor.github.io.git
-         dest=/usr/share/nginx/html/
+         dest=/var/www/dylanmtaylor.com/html
          version=HEAD
          update=yes
 
