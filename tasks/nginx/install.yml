@@ -38,8 +38,8 @@
   - name: Enable all available sites
     shell: find /etc/nginx/sites-available/ -name '*.conf' -type f -exec ln -s {}  /etc/nginx/sites-enabled/ \;
 
-  - name: Retart the nginx service (and enable it at boot time)
+  - name: Restart the nginx service (and enable it at boot time)
     service: name=nginx state=restarted enabled=yes
 
-  - name: Retart the php-fpm service (and enable it at boot time)
+  - name: Restart the php-fpm service (and enable it at boot time)
     service: name=php-fpm state=restarted enabled=yes
