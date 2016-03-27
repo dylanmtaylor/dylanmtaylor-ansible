@@ -6,6 +6,12 @@
   - name: Ensure iptables services are installed
     yum: name=iptables-services state=installed
 
+  - name: Stop the firewalld service (and disable it at boot time)
+    service: name=firewalld state=stopped enabled=no
+
+  - name: Start the iptables service (and enable it at boot time)
+    service: name=iptables state=started enabled=yes
+
 #  - name: Flush iptables rules
 #    command: iptables -F
 
