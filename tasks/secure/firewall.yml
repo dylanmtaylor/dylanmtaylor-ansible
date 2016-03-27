@@ -10,11 +10,11 @@
   - name: Ensure iptables services are installed
     yum: name=iptables-services state=installed
 
-  - name: Start the iptables service (and enable it at boot time)
-    service: name=iptables state=started enabled=yes
+  - name: Stop the iptables service
+    service: name=iptables state=stopped enabled=yes
 
-#  - name: Flush iptables rules
-#    command: iptables -F
+  - name: Flush iptables rules
+    command: iptables -F
 
   - name: Block all null packets
     command: iptables -A INPUT -p tcp --tcp-flags ALL NONE -j DROP
@@ -48,6 +48,9 @@
 
   - name: Save iptables configuration
     shell: iptables-save > /etc/sysconfig/iptables
+
+  - name: Start the iptables service
+    service: name=iptables state=started enabled=yes
 
   - name: Reload iptables service
     service: name=iptables state=reloaded
