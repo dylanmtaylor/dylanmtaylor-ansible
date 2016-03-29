@@ -13,10 +13,6 @@
 
   - name: Configure php-fpm
     template: src=php.ini dest=/etc/php.ini
-#    notify: Restart the php-fpm service
-
-  - name: Restart the php-fpm service
-    service: name=nginx state=restarted
 
   - name: Make directory for website contents
     file: path=/var/www/dylanmtaylor.com/html state=directory mode=0755
@@ -47,11 +43,9 @@
   - name: Enable all available sites
     shell: find /etc/nginx/sites-available/ -name '*.conf' -type f -exec ln -s {}  /etc/nginx/sites-enabled/ \;
 
-  - name: Restart the nginx service
-    service: name=nginx state=restarted
+  - name: Restart the nginx service and enable it at boot time
+    service: name=nginx state=restarted enabled=yes
 
-  - name: Enable nginx service at boot time
-    service: name=nginx enabled=yes
+  - name: Restart the php-fpm service and enable it at boot time
+    service: name=nginx state=restarted enabled=yes
 
-  - name: Enable php-fpm service at boot time
-    service: name=php-fpm enabled=yes
