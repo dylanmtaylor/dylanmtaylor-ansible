@@ -1,6 +1,6 @@
 ---
   - name: Configure sshd for additional security
-    template: src=./files/sshd_config dest=/etc/ssh/sshd_config
+    template: src=sshd_config dest=/etc/ssh/sshd_config
 
   - name: Restart the sshd service (and make sure it's enabled on boot)
     service: name=sshd state=restarted enabled=yes

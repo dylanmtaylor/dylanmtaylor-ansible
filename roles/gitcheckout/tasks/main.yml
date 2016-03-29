@@ -1,0 +1,4 @@
+---
+  - include: website.yml
+  - include: subdomains/apps.yml
+  - include: subdomains/fwc.yml

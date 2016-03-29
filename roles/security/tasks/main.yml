@@ -1,0 +1,4 @@
+---
+    - include: 'sshd.yml'
+    - include: 'sudoers.yml'
+    - include: 'firewall.yml'

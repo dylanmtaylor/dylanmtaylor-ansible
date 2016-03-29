@@ -3,15 +3,11 @@
   hosts: dylanmtaylor-server
   remote_user: root
 
-  tasks:
-    - include: 'tasks/user/setup.yml'
-    - include: 'tasks/secure/sshd.yml'
-    - include: 'tasks/secure/firewall.yml'
-    - include: 'tasks/nginx/install.yml'
-    - include: 'tasks/utilities/install.yml'
-    - include: 'tasks/git/checkout-data.yml'
-    - include: 'tasks/cronjob/configure.yml'
-    - include: 'tasks/swapfile/create.yml'
-    - include: 'tasks/subdomains/fwc.yml'
-    - include: 'tasks/subdomains/apps.yml'
-
+  roles:
+    - users
+    - security
+    - nginx
+    - utilities
+    - gitcheckout
+    - cronjobs
+    - swapfile
