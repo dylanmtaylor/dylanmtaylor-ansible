@@ -1,7 +1,8 @@
 ---
   - name: Configure sshd for additional security
     template: src=sshd_config dest=/etc/ssh/sshd_config
+#    notify: Restart the sshd service
 
-  - name: Restart the sshd service (and make sure it's enabled on boot)
-    service: name=sshd state=restarted enabled=yes
+  - name:  Restart the sshd service (and make sure it's enabled on boot)
+    service: name=sshd state=started enabled=yes
 

@@ -1,0 +1,9 @@
+---
+  - name: Activate new iptables rules
+    shell: iptables-restore < /etc/sysconfig/iptables
+
+  - name: Restart the iptables service
+    service: name=iptables state=restarted
+
+  - name: Restart the sshd service
+    service: name=sshd state=restarted
