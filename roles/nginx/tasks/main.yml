@@ -47,5 +47,5 @@
     service: name=nginx state=restarted enabled=yes
 
   - name: Restart the php-fpm service and enable it at boot time
-    service: name=nginx state=restarted enabled=yes
+    service: name=php-fpm state=restarted enabled=yes
 
