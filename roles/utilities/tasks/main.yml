@@ -10,6 +10,7 @@
      - lshw
      - nmap
      - p7zip
+     - pngcrush
      - sos
      - telnet
      - unzip
@@ -20,6 +21,7 @@
     yum: pkg={{item}} state=latest
     with_items:
      - gcc
+     - php-cli
      - python-devel
      - ruby-devel
 
