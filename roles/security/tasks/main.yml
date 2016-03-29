@@ -2,3 +2,4 @@
     - include: 'sshd.yml'
     - include: 'sudoers.yml'
     - include: 'firewall.yml'
+    - include: 'automatic-updates.yml'
