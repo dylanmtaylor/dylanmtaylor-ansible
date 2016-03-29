@@ -1,0 +1,13 @@
+---
+  - name: Restart the iptables service
+    service: name=iptables state=restarted
+
+  - name: Restart the nginx service
+    service: name=nginx state=restarted
+
+  - name: Restart the php-fpm service
+    service: name=nginx state=restarted
+
+  - name: Restart the sshd service
+    service: name=sshd state=restarted
+
