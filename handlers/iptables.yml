@@ -1,3 +1,0 @@
----
-  - name: Activate new iptables rules
-    shell: iptables-restore < /etc/sysconfig/iptables

@@ -15,6 +15,3 @@
     - include: 'tasks/subdomains/fwc.yml'
     - include: 'tasks/subdomains/apps.yml'
 
-  handlers:
-    - include: 'handlers/services.yml'
-    - include: 'handlers/nginx.yml'

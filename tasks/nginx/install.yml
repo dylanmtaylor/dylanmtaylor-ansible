@@ -11,38 +11,35 @@
   - name: Install the latest version of php-fpm
     yum: name=php-fpm state=latest
 
-  - name: Configure php-fpm
+  - name: Write the php configuration file
     template: src=./files/php.ini dest=/etc/php.ini
-    notify:
-      - Restart the php-fpm service
 
   - name: Make directory for website contents
     file: path=/var/www/dylanmtaylor.com/html state=directory mode=0755
 
+  - name: Write the nginx configuration file
+    template: src=./files/nginx.conf dest=/etc/nginx/nginx.conf
+
   - name: Remove Nginx default.conf
     file: path=/etc/nginx/conf.d/default.conf state=absent
 
-  - name: Write the nginx configuration file
-    template: src=./files/nginx.conf dest=/etc/nginx/nginx.conf
-    notify:
-      - Restart the nginx service
-
   - name: Nginx sites-available directory
-    file: path=/etc/nginx/sites-available state=directory mode=0775
+    file: path=/etc/nginx/sites-available state=directory mode=0755
+
+  - name: Remove old Nginx sites-enabled directory
+    file: path=/etc/nginx/sites-enabled state=absent
+
+  - name: Create Nginx sites-enabled directory
+    file: path=/etc/nginx/sites-enabled state=directory mode=0755
 
   - name: Update the configuration files in sites-available
     synchronize: mode=push src=./files/nginx-sites/ dest=/etc/nginx/sites-available
-    notify:
-      - Remove old Nginx sites-enabled directory
 
-  - name: Nginx sites-enabled directory
-    file: path=/etc/nginx/sites-enabled state=directory mode=0755
-    notify:
-      - Enable all available sites
-      - Restart the nginx service
+  - name: Enable all available sites
+    shell: find /etc/nginx/sites-available/ -name '*.conf' -type f -exec ln -s {}  /etc/nginx/sites-enabled/ \;
 
-  - name: Enable nginx service at boot time
-    service: name=nginx enabled=yes
+  - name: Restart the nginx service (and enable it at boot time)
+    service: name=nginx state=restarted enabled=yes
 
-  - name: Enable php-fpm service at boot time
-    service: name=php-fpm enabled=yes
+  - name: Restart the php-fpm service (and enable it at boot time)
+    service: name=php-fpm state=restarted enabled=yes

@@ -12,10 +12,10 @@
 
   - name: Configure iptables for additional security
     template: src=./files/iptables dest=/etc/sysconfig/iptables
-    notify:
-      - Activate new iptables rules
-      - Restart the iptables service
 
-  - name: Enable the iptables service at boot time
-    service: name=iptables enabled=yes
+  - name: Activate new iptables rules
+    shell: iptables-restore < /etc/sysconfig/iptables
+
+  - name: Restart iptables service
+    service: name=iptables state=restarted
 
