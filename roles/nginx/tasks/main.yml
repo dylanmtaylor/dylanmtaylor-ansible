@@ -28,7 +28,7 @@
     file: path=/etc/nginx/sites-available state=directory mode=0775
 
   - name: Update the configuration files in sites-available
-    synchronize: mode=push src=nginx-sites/ dest=/etc/nginx/sites-available
+    synchronize: mode=push src=sites/ dest=/etc/nginx/sites-available
 #    notify: Remove old Nginx sites-enabled directory
 
   - name: Remove old Nginx sites-enabled directory
