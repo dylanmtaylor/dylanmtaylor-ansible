@@ -3,7 +3,7 @@
     shell: iptables-restore < /etc/sysconfig/iptables
 
   - name: Restart the iptables service
-    service: name=iptables state=restarted
+    service: name=iptables state=restarted enabled=yes
 
   - name: Restart the sshd service
-    service: name=sshd state=restarted
+    service: name=sshd state=restarted enabled=yes

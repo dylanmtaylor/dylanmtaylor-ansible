@@ -2,6 +2,7 @@
   - name: Install the latest versions of utility packages using yum
     yum: pkg={{item}} state=latest
     with_items:
+     - asciidoc
      - byobu
      - curl
      - git
@@ -21,8 +22,10 @@
     yum: pkg={{item}} state=latest
     with_items:
      - gcc
+     - make
      - php-cli
      - python-devel
+     - python-pip
      - ruby-devel
 
   - name: Install the latest version of jekyll using rubygems
