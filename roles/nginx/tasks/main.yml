@@ -27,6 +27,9 @@
   - name: Nginx sites-available directory
     file: path=/etc/nginx/sites-available state=directory mode=0775
 
+  - name: Ensure rsync is installed on system
+    yum: name=rsync state=latest
+
   - name: Update the configuration files in sites-available
     synchronize: mode=push src=sites/ dest=/etc/nginx/sites-available
 #    notify: Remove old Nginx sites-enabled directory
