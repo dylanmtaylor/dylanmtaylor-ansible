@@ -18,10 +18,15 @@
      - vim
      - wget
 
-  - name: Install the latest versions of development packages using yum
+  # This could be done using yum but depending on the ansible version it's either  "'@Development Tools'" or  '@Development Tools'
+  - name: Install the 'Development Tools' group using yum
+    command: yum -y install '@Development Tools'
+    args:
+      creates: /usr/bin/svn
+
+  - name: Install the latest versions of additional development packages using yum
     yum: pkg={{item}} state=latest
     with_items:
-     - '@Development Tools'
      - php-cli
      - python-devel
      - python-pip
