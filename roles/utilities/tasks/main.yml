@@ -21,8 +21,7 @@
   - name: Install the latest versions of development packages using yum
     yum: pkg={{item}} state=latest
     with_items:
-     - gcc
-     - make
+     - '@Development Tools'
      - php-cli
      - python-devel
      - python-pip
