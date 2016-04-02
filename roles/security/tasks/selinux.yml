@@ -8,13 +8,21 @@
   - name: Enable SELinux enforcing for enhanced security
     selinux: policy=targeted state=enforcing
 
+  - name: Check system SELinux enforcement policy
+    shell: getenforce
+    register: selinux_enforce_result
+    ignore_errors: true
+    changed_when: false
+
   - name: Restart server so that SELinux is running
     shell: sleep 2 && shutdown -r now "Reboot triggered by Ansible"
+    when: selinux_enforce_result.stdout != 'Enforcing'
     async: 1
     poll: 0
     ignore_errors: true
 
   - name: Wait for server to come back online
+    when: selinux_enforce_result.stdout != 'Enforcing'
     local_action:
       module: wait_for
        host={{ inventory_hostname }}
