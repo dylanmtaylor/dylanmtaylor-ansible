@@ -30,3 +30,7 @@
       - httpd_can_network_connect_db
       - httpd_enable_cgi
       - httpd_setrlimit
+
+  # This prevents us from having to give Nginx access to var_t context.
+  - name: Set /var/www SELinux context to httpd_config_t
+    file: path=/var/www recurse=yes setype=httpd_config_t
