@@ -12,6 +12,7 @@
      - nmap
      - p7zip
      - pngcrush
+     - setroubleshoot
      - sos
      - telnet
      - unzip
