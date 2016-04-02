@@ -7,4 +7,4 @@
          dest=/var/www/dylanmtaylor.com/html
          version=HEAD
          update=yes
-
+         force=yes
