@@ -1,0 +1,11 @@
+---
+  - name: Install SELinux management dependencies
+    yum: name={{ item }} state=present
+    with_items:
+      - libselinux-python
+      - libsemanage-python
+
+  - name: Enable SELinux enforcing for enhanced security
+    selinux: policy=targeted state=enforcing
+
+
