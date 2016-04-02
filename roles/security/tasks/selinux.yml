@@ -21,3 +21,12 @@
        port=22
        delay=10
        state=started
+
+  # It's possible to get a list of available SELinux booleans using the command 'getsebool -a'
+  - name: Set required SELinux boolean values
+    seboolean: name={{ item }} state=yes persistent=yes
+    with_items:
+      - httpd_can_network_connect
+      - httpd_can_network_connect_db
+      - httpd_enable_cgi
+      - httpd_setrlimit
