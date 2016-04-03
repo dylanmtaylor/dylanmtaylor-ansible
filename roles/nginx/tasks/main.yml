@@ -17,6 +17,9 @@
   - name: Make directory for website contents
     file: path=/var/www/dylanmtaylor.com/html state=directory mode=0755
 
+  - name: Make directory for miscellaneous files
+    file: path=/var/www/files.dylanmtaylor.com/html state=directory mode=0755
+
   - name: Remove Nginx default.conf
     file: path=/etc/nginx/conf.d/default.conf state=absent
 
