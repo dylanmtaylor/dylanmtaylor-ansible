@@ -60,7 +60,7 @@
     shell: pip install speedtest-cli
 
   - name: Install the latest version of jekyll using rubygems
-    shell: bash -c 'source scl_source enable rh-ruby24; gem install jekyll'
+    shell: bash -c 'source scl_source enable rh-ruby24; gem install jekyll bundler rubygems-update; update_rubygems'
 
   - name: Remove immutable bit from /usr/lib/udev/rules.d/60-net.rules
     command: chattr -i /usr/lib/udev/rules.d/60-net.rules
