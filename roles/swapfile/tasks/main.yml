@@ -1,6 +1,6 @@
 ---
-  - command: fallocate -l 2G /swapfile
-    name: allocate a 2 GB swap file at /swapfile
+  - command: fallocate -l 1G /swapfile
+    name: allocate a 1 GB swap file at /swapfile
     ignore_errors: yes
     args:
       creates: /swapfile
