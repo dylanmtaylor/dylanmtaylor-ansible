@@ -1,3 +1,6 @@
 ---
   - name: Install ElRepo EL7 mainline kernel
     shell: curl https://raw.githubusercontent.com/dylanmtaylor/enterprise-linux-7-mainline-kernel-installer/master/mainline-kernel.sh | sudo bash
+
+  - name: Reboot server
+    command: /sbin/reboot

@@ -1,16 +1,14 @@
 ---
 
-  - name: Install the package yum-cron
-    yum: name=yum-cron state=latest
+  - name: Install the package auter to facilitate updates
+    yum: name=auter state=latest
     ignore_errors: yes
 
   - name: Turn automatic update apply on
-    ignore_errors: yes
-    replace: dest=/etc/yum/yum-cron.conf
-             regexp='apply_updates = no'
-             replace='apply_updates = yes'
-             backup=yes
+    template: src=auter.conf dest=/etc/auter/auter.conf
 
-  - name: Start the yum-cron service (and enable it on boot)
-    service: name=yum-cron state=started enabled=yes
-    ignore_errors: yes
+  - name: Create cron job to run auter --prep hourly
+    cron: name="run auter --prep hourly" minute="0" job="/usr/bin/auter --prep"
+
+  - name: Create cron job to run auter --apply hourly
+    cron: name="run auter --apply hourly" minute="30" job="/usr/bin/auter --apply"

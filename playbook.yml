@@ -5,8 +5,8 @@
 
   roles:
     - users
-    - security
     - nginx
+    - security
     - utilities
     - gitcheckout
     - cronjobs
