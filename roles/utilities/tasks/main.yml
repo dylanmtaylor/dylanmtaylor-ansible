@@ -49,6 +49,9 @@
      - rh-ruby24-rubygems-devel
      - rh-ruby24-rubygem-bundler
 
+  - name: upgrade pip
+    shell: pip install --upgrade pip
+
   - name: install speedtest
     shell: pip install speedtest-cli
 
