@@ -19,6 +19,7 @@
      - unzip
      - vim
      - wget
+     - fio
 
   # This could be done using yum but depending on the ansible version it's either  "'@Development Tools'" or  '@Development Tools'
   - name: Install the 'Development Tools' group using yum
@@ -33,7 +34,9 @@
     yum: name=rh-ruby24 state=latest
 
   - name: Enable ruby 2.4
-    shell: scl enable rh-ruby24 bash
+    lineinfile:
+      path: /root/.bashrc
+      line: 'source scl_source enable rh-ruby24'
 
   - name: Install the latest versions of additional development packages using yum
     yum: pkg={{item}} state=latest
@@ -46,11 +49,11 @@
      - rh-ruby24-rubygems-devel
      - rh-ruby24-rubygem-bundler
 
+  - name: install speedtest
+    shell: pip install speedtest-cli
+
   - name: Install the latest version of jekyll using rubygems
-    shell: bash -c 'gem install jekyll'
+    shell: bash -c 'source scl_source enable rh-ruby24; gem install jekyll'
 
   - name: Remove immutable bit from /usr/lib/udev/rules.d/60-net.rules
     command: chattr -i /usr/lib/udev/rules.d/60-net.rules
-
-  - name: Upgrade all installed packages
-    yum: name=* state=latest
