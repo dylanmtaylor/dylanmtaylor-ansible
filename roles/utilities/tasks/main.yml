@@ -26,16 +26,28 @@
     args:
       creates: /usr/bin/svn
 
+  - name: Install SCL repository
+    yum: name=centos-release-scl state=latest
+
+  - name: Install rh-ruby24
+    yum: name=rh-ruby24 state=latest
+
+  - name: Enable ruby 2.4
+    shell: scl enable rh-ruby24 bash
+
   - name: Install the latest versions of additional development packages using yum
     yum: pkg={{item}} state=latest
     with_items:
      - php-cli
      - python-devel
      - python-pip
-     - ruby-devel
+     - rh-ruby24-build
+     - rh-ruby24-ruby-devel
+     - rh-ruby24-rubygems-devel
+     - rh-ruby24-rubygem-bundler
 
   - name: Install the latest version of jekyll using rubygems
-    gem: name=jekyll state=latest
+    shell: bash -c 'gem install jekyll'
 
   - name: Remove immutable bit from /usr/lib/udev/rules.d/60-net.rules
     command: chattr -i /usr/lib/udev/rules.d/60-net.rules
