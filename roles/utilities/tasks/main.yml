@@ -29,6 +29,8 @@
      - iptraf-ng
      - nmon
      - yum-utils
+     - lm_sensors
+     - strace
 
   # This could be done using yum but depending on the ansible version it's either  "'@Development Tools'" or  '@Development Tools'
   - name: Install the 'Development Tools' group using yum
@@ -50,9 +52,11 @@
   - name: Install the latest versions of additional development packages using yum
     yum: pkg={{item}} state=latest
     with_items:
+     - gcc
      - php-cli
      - python-devel
      - python-pip
+     - wireless-tools
      - rh-ruby24-build
      - rh-ruby24-ruby-devel
      - rh-ruby24-rubygems-devel
@@ -64,8 +68,20 @@
   - name: install speedtest
     shell: pip install speedtest-cli
 
+  - name: use pip to install the latest glances version
+    shell: bash -c 'pip install --upgrade setuptools glances[action,browser,cpuinfo,chart,docker,export,folders,gpu,ip,raid,snmp,web,wifi]; pip install --upgrade glances'
+
   - name: Install the latest version of jekyll and travis using rubygems
     shell: bash -c 'source scl_source enable rh-ruby24; gem install jekyll travis bundler rubygems-update; update_rubygems'
 
   - name: Remove immutable bit from /usr/lib/udev/rules.d/60-net.rules
     command: chattr -i /usr/lib/udev/rules.d/60-net.rules
+
+  - name: Install cockpit
+    yum: name=cockpit state=latest
+
+  - name: Enable cockpit
+    systemd:
+      name: cockpit.socket
+      state: started
+      enabled: True
