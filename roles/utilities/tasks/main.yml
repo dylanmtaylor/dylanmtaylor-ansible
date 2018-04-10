@@ -24,6 +24,10 @@
      - duplicity
      - pv
      - mc
+     - glances
+     - iftop
+     - iptraf-ng
+     - nmon
      - yum-utils
 
   # This could be done using yum but depending on the ansible version it's either  "'@Development Tools'" or  '@Development Tools'
