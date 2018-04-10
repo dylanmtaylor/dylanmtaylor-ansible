@@ -4,6 +4,7 @@
     with_items:
       - libselinux-python
       - libsemanage-python
+      - selinux-policy
 
   - name: Enable SELinux enforcing for enhanced security
     selinux: policy=targeted state=enforcing
