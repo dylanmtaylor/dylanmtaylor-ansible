@@ -23,6 +23,7 @@
      - tcpdump
      - duplicity
      - pv
+     - mc
      - yum-utils
 
   # This could be done using yum but depending on the ansible version it's either  "'@Development Tools'" or  '@Development Tools'
