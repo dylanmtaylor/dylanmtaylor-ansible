@@ -8,6 +8,7 @@
      - git
      - htop
      - iotop
+     - ioping
      - lshw
      - nmap
      - p7zip
@@ -77,8 +78,15 @@
   - name: Remove immutable bit from /usr/lib/udev/rules.d/60-net.rules
     command: chattr -i /usr/lib/udev/rules.d/60-net.rules
 
-  - name: Install cockpit
-    yum: name=cockpit state=latest
+  - name: Install cockpit and docker
+    yum: pkg={{item}} state=latest
+    with_items:
+     - cockpit
+     - cockpit-storaged
+     - cockpit-selinux
+     - cockpit-sosreport
+     - cockpit-docker
+     - docker
 
   - name: Enable cockpit
     systemd:
