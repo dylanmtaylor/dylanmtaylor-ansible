@@ -1,20 +1,45 @@
 ---
-# https://www.digitalocean.com/community/tutorials/how-to-set-up-a-basic-iptables-firewall-on-centos-6
 
-  - name: Uninstall the firewalld service
-    yum: name=firewalld state=removed
+  - name: Install the firewalld service
+    yum: name=firewalld state=latest
 
-  - name: Ensure iptables is installed
-    yum: name=iptables state=installed
+  - name: Ensure iptables services are removed
+    yum: name=iptables-services state=removed
 
-  - name: Ensure iptables services are installed
-    yum: name=iptables-services state=installed
+  - name: Make sure that the firewalld service is active (and enabled on boot)
+    service: name=firewalld state=started enabled=yes
 
-  - name: Configure iptables for additional security
-    template: src=iptables dest=/etc/sysconfig/iptables
+  - name: Allow ssh in the dmz zone
+    firewalld:
+      zone: dmz
+      service: ssh
+      permanent: true
+      state: enabled
 
-  - name: Make sure that the iptables service is active (and enabled on boot)
-    service: name=iptables state=started enabled=yes
+  - name: Allow http in the dmz zone
+    firewalld:
+      zone: dmz
+      service: http
+      permanent: true
+      state: enabled
 
-  - name: Load the new iptables rules
-    service: name=iptables state=reloaded
+  - name: Allow https in the dmz zone
+    firewalld:
+      zone: dmz
+      service: https
+      permanent: true
+      state: enabled
+
+  - name: Allow cockpit in the dmz zone
+    firewalld:
+      zone: dmz
+      port: 9090/tcp
+      permanent: true
+      state: enabled
+
+  - name: Set dmz as default policy
+    command: firewall-cmd --set-default-zone=dmz
+
+  - name: Restart firewalld
+    service: name=firewalld state=restarted
+
