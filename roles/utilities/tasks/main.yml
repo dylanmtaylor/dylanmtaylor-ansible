@@ -79,12 +79,12 @@
   - name: Enable neofetch on login for root
     lineinfile:
       path: /root/.bashrc
-      line: '/opt/neofetch/neofetch'
+      line: '/opt/neofetch/neofetch --disable packages'
 
   - name: Enable neofetch on login for dylan
     lineinfile:
       path: /home/dylan/.bashrc
-      line: '/opt/neofetch/neofetch'
+      line: '/opt/neofetch/neofetch --disable packages'
 
   - name: upgrade pip
     shell: pip install --upgrade pip
