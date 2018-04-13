@@ -79,7 +79,7 @@
   - name: Enable neofetch on login for root
     lineinfile:
       path: /root/.bashrc
-      line: '/opt/neofetch/neofetch --disable packages'
+      line: '#/opt/neofetch/neofetch --disable packages'
 
   - name: Enable neofetch on login for dylan
     lineinfile:
