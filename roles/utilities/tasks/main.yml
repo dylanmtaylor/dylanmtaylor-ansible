@@ -1,4 +1,5 @@
 ---
+
   - name: Install the latest versions of utility packages using yum
     yum: pkg={{item}} state=latest
     with_items:
@@ -46,9 +47,14 @@
   - name: Install rh-ruby24
     yum: name=rh-ruby24 state=latest
 
-  - name: Enable ruby 2.4
+  - name: Enable ruby 2.4 for root
     lineinfile:
       path: /root/.bashrc
+      line: 'source scl_source enable rh-ruby24'
+
+  - name: Enable ruby 2.4 for dylan
+    lineinfile:
+      path: /home/dylan/.bashrc
       line: 'source scl_source enable rh-ruby24'
 
   - name: Install the latest versions of additional development packages using yum
@@ -64,6 +70,21 @@
      - rh-ruby24-rubygems-devel
      - rh-ruby24-rubygem-bundler
      - openssl-devel
+
+  - name: Checkout neofetch from git repository
+    git:
+      repo: https://github.com/dylanaraps/neofetch.git
+      dest: /opt/neofetch
+
+  - name: Enable neofetch on login for root
+    lineinfile:
+      path: /root/.bashrc
+      line: '/opt/neofetch/neofetch'
+
+  - name: Enable neofetch on login for dylan
+    lineinfile:
+      path: /home/dylan/.bashrc
+      line: '/opt/neofetch/neofetch'
 
   - name: upgrade pip
     shell: pip install --upgrade pip
