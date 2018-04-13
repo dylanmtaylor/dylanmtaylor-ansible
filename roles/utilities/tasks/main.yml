@@ -93,3 +93,36 @@
       name: cockpit.socket
       state: started
       enabled: True
+
+  - name: If Server with GUI install, remove useless packages
+    yum: pkg={{item}} state=absent
+    with_items:
+     - alsa-firmware
+     - cheese
+     - gnome-software
+     - gnome-weather
+     - empathy
+     - totem
+     - cups
+     - firefox # web browsing on a server isn't a great idea, but dillo has a much smaller footprint if needed
+     - gutenprint
+     - ghostscript
+     - evince
+     - gnome-font-viewer
+     - gnome-user-docs
+     - gnome-color-manager
+     - gnome-screenshot
+     - gnome-contacts
+     - gnome-dictionary
+     - gnome-abrt
+     - gnome-clocks
+     - gnome-boxes
+     - system-config-printer
+     - gucharmap
+     - vinagre
+     - eog
+     - orca
+     - icedtea-web
+     - java
+     - java-1.8.0-openjdk-headless
+     - openscap # not really useless, but takes up a lot of disk space and I don't use it
