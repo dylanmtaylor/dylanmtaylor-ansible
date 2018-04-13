@@ -32,6 +32,7 @@
      - yum-utils
      - lm_sensors
      - strace
+     - certbot
 
   # This could be done using yum but depending on the ansible version it's either  "'@Development Tools'" or  '@Development Tools'
   - name: Install the 'Development Tools' group using yum
@@ -62,6 +63,7 @@
      - rh-ruby24-ruby-devel
      - rh-ruby24-rubygems-devel
      - rh-ruby24-rubygem-bundler
+     - openssl-devel
 
   - name: upgrade pip
     shell: pip install --upgrade pip
@@ -93,6 +95,9 @@
       name: cockpit.socket
       state: started
       enabled: True
+
+  # - name: Newer pyOpenSSL
+  #   command: yum -y install https://cbs.centos.org/kojifiles/packages/pyOpenSSL/17.3.0/3.el7/noarch/python2-pyOpenSSL-17.3.0-3.el7.noarch.rpm
 
   - name: If Server with GUI install, remove useless packages
     yum: pkg={{item}} state=absent
