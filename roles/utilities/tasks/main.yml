@@ -106,6 +106,7 @@
     with_items:
      - cockpit
      - cockpit-storaged
+     - cockpit-networkmanager
      - cockpit-selinux
      - cockpit-sosreport
      - cockpit-docker
