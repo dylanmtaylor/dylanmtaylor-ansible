@@ -105,9 +105,12 @@
     yum: pkg={{item}} state=latest
     with_items:
      - cockpit
+     - cockpit-docs
      - cockpit-storaged
      - cockpit-networkmanager
+     - cockpit-packagekit
      - cockpit-selinux
+     - cockpit-pcp
      - cockpit-sosreport
      - cockpit-docker
      - docker
