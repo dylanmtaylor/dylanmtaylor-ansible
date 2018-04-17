@@ -1,0 +1,54 @@
+---
+  - name: Install EPEL repository
+    yum: name=epel-release state=latest
+
+  - name: Install the 'X Window System' group
+    yum:
+      name: "@X Window System"
+      state: present
+
+  - name: Install some select desktop packages
+    yum: pkg={{item}} state=latest
+    with_items:
+     - lxqt-about
+     - lxqt-common
+     - lxqt-config
+     - lxqt-globalkeys
+     - lxqt-notificationd
+     - lxqt-openssh-askpass
+     - lxqt-panel
+     - lxqt-policykit
+     - lxqt-qtplugin
+     - lxqt-runner
+     - lxqt-session
+     - lxqt-sudo
+     - network-manager-applet
+     - nm-connection-editor
+     - tigervnc-server
+     - pcmanfm-qt
+     - qterminal-qt5
+     - lightdm
+     - openbox
+     - firefox
+     - xterm
+     - baobab
+     - firewall-config
+     - vim-X11
+
+  - name: Enable lightdm
+    service: name=lightdm enabled=yes
+
+  - name: Set default target to graphical
+    command: systemctl set-default graphical.target
+   
+  # - name: Make sure root has .vnc directory
+  #   file: path=/root/.vnc/ state=directory mode=0755
+  #
+  # - name: Configure vnc xstartup for root
+  #   template: src=xstartup dest=/root/.vnc/xstartup
+
+  - name: Make sure dylan has .vnc directory
+    file: path=/home/dylan/.vnc/ state=directory mode=0755
+
+  - name: Configure vnc xstartup for dylan
+    template: src=xstartup dest=/home/dylan/.vnc/xstartup

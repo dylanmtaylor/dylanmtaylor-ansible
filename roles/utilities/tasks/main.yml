@@ -101,19 +101,19 @@
   - name: Remove immutable bit from /usr/lib/udev/rules.d/60-net.rules
     command: chattr -i /usr/lib/udev/rules.d/60-net.rules
 
-  - name: Install cockpit and docker
+  - name: Install cockpit # and docker
     yum: pkg={{item}} state=latest
     with_items:
      - cockpit
-     - cockpit-docs
+     - cockpit-doc
      - cockpit-storaged
      - cockpit-networkmanager
      - cockpit-packagekit
      - cockpit-selinux
      - cockpit-pcp
      - cockpit-sosreport
-     - cockpit-docker
-     - docker
+     # - cockpit-docker
+     # - docker
 
   - name: Enable cockpit
     systemd:
@@ -134,7 +134,6 @@
      - empathy
      - totem
      - cups
-     - firefox # web browsing on a server isn't a great idea, but dillo has a much smaller footprint if needed
      - gutenprint
      - ghostscript
      - evince

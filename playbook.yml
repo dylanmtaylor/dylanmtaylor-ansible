@@ -10,5 +10,5 @@
     - utilities
     - gitcheckout
     - cronjobs
-    # - swapfile
+    - lxqt-desktop
     - mainline
