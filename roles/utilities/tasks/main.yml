@@ -155,4 +155,17 @@
      - icedtea-web
      - java
      - java-1.8.0-openjdk-headless
+     - libpinyin
+     - libhangul
+     - libchewing
+     - libkkc-data
+     - cjkuni-uming-fonts
+     - wqy-zenhei-fonts
+     - nhn-nanum-gothic-fonts
+     - skkdic
+     - webkitgtk3
+     - iwl7265-firmware
+     - iwl3160-firmware
+     - iwl7260-firmware
+     - libpurple
      - openscap # not really useless, but takes up a lot of disk space and I don't use it
