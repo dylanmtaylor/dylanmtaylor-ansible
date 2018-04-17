@@ -34,13 +34,14 @@
      - baobab
      - firewall-config
      - vim-X11
+     - lximage-qt
 
   - name: Enable lightdm
     service: name=lightdm enabled=yes
 
   - name: Set default target to graphical
     command: systemctl set-default graphical.target
-   
+
   # - name: Make sure root has .vnc directory
   #   file: path=/root/.vnc/ state=directory mode=0755
   #
