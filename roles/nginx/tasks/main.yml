@@ -8,7 +8,7 @@
   - name: Install the latest version of nginx
     yum: name=nginx state=latest
 
-  - name: Install the latest version of php-fp
+  - name: Install the latest version of php-fpm
     yum: name=php-fpm state=latest
     
   - name: Install texlive packages for resume generation
