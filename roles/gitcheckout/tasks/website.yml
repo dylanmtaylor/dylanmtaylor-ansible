@@ -10,7 +10,7 @@
          force=yes
          
   - name: Ensure directory for resume exists
-  file: path=/root/Dylan-Resume state=directory
+    file: path=/root/Dylan-Resume state=directory
 
   - name: Checkout latest version of resume files from github
     git: repo=https://github.com/dylanmtaylor/Dylan-Resume.git
