@@ -11,4 +11,7 @@
   - name: Create cron job to update apps subdomain contents
     cron: name="periodically update apps subdomain files" minute="*/15" job="cd /var/www/apps.dylanmtaylor.com/html; git pull >/dev/null 2>&1"
 
+  - name: Create cron job to update my resume
+    cron: name="periodically update my resume" minute="*/5" job="cd /root/Dylan-Resume; git reset --hard HEAD; git pull >/dev/null 2>&1; xelatex --output-directory=/var/www/dylanmtaylor.com/html/files dylan-resume.tex; ls /var/www/dylanmtaylor.com/html/files/"
+
 
