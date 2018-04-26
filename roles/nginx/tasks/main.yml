@@ -8,11 +8,15 @@
   - name: Install the latest version of nginx
     yum: name=nginx state=latest
 
-  - name: Install the latest version of php-fpm
+  - name: Install the latest version of php-fp
     yum: name=php-fpm state=latest
     
-  - name: Install texlive-collection-xetex for resume generation
-    yum: name=texlive-collection-xetex state=latest
+  - name: Install texlive packages for resume generation
+    yum: pkg={{item}} state=latest
+    with_items:
+     - texlive-collection-xetex
+     - texlive-zapfding
+     - texlive-cite  
 
   - name: Configure php-fpm
     template: src=php.ini dest=/etc/php.ini
