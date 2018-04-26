@@ -16,7 +16,8 @@
     with_items:
      - texlive-collection-xetex
      - texlive-zapfding
-     - texlive-cite  
+     - texlive-cite
+     - texlive-substr
 
   - name: Configure php-fpm
     template: src=php.ini dest=/etc/php.ini
