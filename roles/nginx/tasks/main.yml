@@ -10,6 +10,9 @@
 
   - name: Install the latest version of php-fpm
     yum: name=php-fpm state=latest
+    
+  - name: Install texlive-collection-xetex for resume generation
+    yum: name=texlive-collection-xetex state=latest
 
   - name: Configure php-fpm
     template: src=php.ini dest=/etc/php.ini
