@@ -1,6 +1,0 @@
----
-  - name: Autorelabel filesystem
-    shell: touch /.autorelabel
-
-  - name: Reboot server
-    command: /sbin/reboot
