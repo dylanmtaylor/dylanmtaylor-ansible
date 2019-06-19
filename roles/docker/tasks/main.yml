@@ -50,7 +50,7 @@
       state: 'started'
       restart_policy: 'always'
       env:
-        VIRTUAL_HOST: 'www.dylanmtaylor.com,dylanmtaylor.com'
+        VIRTUAL_HOST: 'www.dylanmtaylor.com,dylanmtaylor.com,dylanmtaylor.local'
       volumes:
         - /var/www/dylanmtaylor.com/html/:/usr/share/nginx/html:ro
         
