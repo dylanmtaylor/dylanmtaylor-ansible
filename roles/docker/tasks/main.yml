@@ -1,5 +1,5 @@
 ---
-  - name: install packages
+  - name: Install packages
     yum: name={{ item }} state=latest update_cache=yes
     with_items:
       - git
