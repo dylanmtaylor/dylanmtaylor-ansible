@@ -41,10 +41,10 @@
     with_items:
      - gcc
      - php-cli
-     - python-devel
-     - python-pip
+     - python-dev
+     - python3-pip
      - wireless-tools
-     - openssl-devel
+     - openssl-dev
 
   - name: Checkout neofetch from git repository
     git:
