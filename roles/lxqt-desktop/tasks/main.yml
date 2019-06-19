@@ -13,8 +13,8 @@
      - baobab
      - firewall-config
 
-  - name: Enable lightdm
-    service: name=lightdm enabled=yes
+  - name: Enable sddm
+    service: name=sddm enabled=yes
 
   - name: Set default target to graphical
     command: systemctl set-default graphical.target
