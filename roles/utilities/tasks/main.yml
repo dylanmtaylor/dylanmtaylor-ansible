@@ -66,10 +66,13 @@
   - name: Install glances
     pip: name=glances
 
-  - name: Install the latest version of jekyll and travis using rubygems
-    shell: bash -c 'gem install jekyll travis bundler rubygems-update; update_rubygems'
+  - name: Install the latest version of jekyll and travis using apt
+    apt: pkg={{item}} state=latest
+    with_items:
+     - jekyll
+     - travis
 
-  - name: Install cockpit # and docker
+  - name: Install cockpit
     apt: pkg={{item}} state=latest
     with_items:
      - cockpit
