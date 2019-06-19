@@ -5,8 +5,8 @@
 
   roles:
     - users
-    - docker
     - nginx
+    - docker
     - gitcheckout
     - cronjobs
     - utilities
