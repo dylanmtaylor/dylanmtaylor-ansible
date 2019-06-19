@@ -3,7 +3,7 @@
     apt: pkg={{item}} state=latest
     with_items:
      - lxqt
-     - tigervnc-server
+     - tigervnc-standalone-server
      - pcmanfm-qt
      - qterminal-qt5
      - lightdm
