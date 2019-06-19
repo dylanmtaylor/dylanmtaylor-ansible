@@ -60,10 +60,10 @@
       path: /home/dylan/.bashrc
       line: '/opt/neofetch/neofetch --disable packages'
 
-  - name: Install setuptools
+  - name: Install speedtest-cli
     pip: name=speedtest-cli
     
-  - name: Install setuptools
+  - name: Install glances
     pip: name=glances
 
   - name: Install the latest version of jekyll and travis using rubygems
