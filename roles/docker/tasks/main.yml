@@ -35,9 +35,9 @@
       name: jwilder/nginx-proxy
       source: pull
 
-  - name: Pull PHP image
+  - name: Pull redirect image
     docker_image:
-      name: 'php:7-fpm'
+      name: 'morbz/docker-web-redirect'
       source: pull
       
   - name: Pull nginx-php-fpm image
@@ -103,11 +103,10 @@
   - name: Run git website
     docker_container:
       name: 'git-dylanmtaylor-com'
-      image: 'nginx'
+      image: 'morbz/docker-web-redirect'
       state: 'started'
       restart_policy: 'always'
       env:
         VIRTUAL_HOST: 'git.dylanmtaylor.com,git.dylanmtaylor.local'
-      volumes:
-        - /etc/nginx/sites-available/git.dylanmtaylor.com.conf:/etc/nginx/conf.d/site.conf:ro
+        REDIRECT_TARGET: 'https://github.com/dylanmtaylor'
         
