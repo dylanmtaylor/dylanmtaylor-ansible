@@ -66,11 +66,10 @@
   - name: Install glances
     pip: name=glances
 
-  - name: Install the latest version of jekyll and travis using apt
+  - name: Install the latest version of jekyll using apt
     apt: pkg={{item}} state=latest
     with_items:
      - jekyll
-     - travis
 
   - name: Install cockpit
     apt: pkg={{item}} state=latest
