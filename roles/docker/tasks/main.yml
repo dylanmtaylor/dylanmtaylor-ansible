@@ -72,6 +72,7 @@
         VIRTUAL_HOST: 'www.dylanmtaylor.com,dylanmtaylor.com,dylanmtaylor.local,localhost'
       volumes:
         - /var/www/dylanmtaylor.com/html/:/usr/share/nginx/html:ro
+        - /var/www/errors/404.html:/var/www/errors/404.html:ro
 
   - name: Run apps website
     docker_container:
@@ -84,6 +85,8 @@
         GIT_EMAIL: "dylan@dylanmtaylor.com"
         GIT_REPO: https://github.com/dylanmtaylor/apps.dylanmtaylor.com.git
         VIRTUAL_HOST: 'apps.dylanmtaylor.com,apps.dylanmtaylor.local'
+      volumes:
+        - /var/www/errors/404.html:/var/www/errors/404.html:ro
 
   - name: Run fwc website
     docker_container:
@@ -96,6 +99,8 @@
         GIT_EMAIL: "dylan@dylanmtaylor.com"
         GIT_REPO: https://github.com/dylanmtaylor/fwc.dylanmtaylor.com.git
         VIRTUAL_HOST: 'fwc.dylanmtaylor.com,fwc.dylanmtaylor.local'
+      volumes:
+        - /var/www/errors/404.html:/var/www/errors/404.html:ro
 
   - name: Run files website
     docker_container:

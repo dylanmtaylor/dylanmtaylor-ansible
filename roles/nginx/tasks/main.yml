@@ -15,6 +15,12 @@
   - name: Make directory for miscellaneous files
     file: path=/var/www/files.dylanmtaylor.com/html state=directory mode=0755
 
+  - name: Make directory for error pages
+    file: path=/var/www/errors state=directory mode=0755
+
+  - name: Write the 404 error page file
+    template: src=404.html dest=/var/www/errors/404.html
+
   - name: Nginx sites-available directory
     file: path=/etc/nginx/sites-available state=directory mode=0775
 
