@@ -99,8 +99,6 @@
         VIRTUAL_HOST: 'fwc.dylanmtaylor.com,fwc.dylanmtaylor.local'
       volumes:
         - /var/www/fwc.dylanmtaylor.com/html/:/var/www/html/:ro
-      links:
-        - 'php7-fpm-fwc'
         
   - name: Run git website
     docker_container:
