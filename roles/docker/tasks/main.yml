@@ -1,4 +1,11 @@
 ---
+  - name: install packages
+    yum: name={{ item }} state=latest update_cache=yes
+    with_items:
+      - git
+      - wget
+      - curl
+
   - name: Install docker
     shell: curl -sSL https://get.docker.com/ | sh
     args:
