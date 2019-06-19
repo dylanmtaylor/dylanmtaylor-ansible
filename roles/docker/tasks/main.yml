@@ -80,6 +80,8 @@
       state: 'started'
       restart_policy: 'always'
       env:
+        GIT_NAME: "Dylan M. Taylor"
+        GIT_EMAIL: "dylan@dylanmtaylor.com"
         GIT_REPO: https://github.com/dylanmtaylor/apps.dylanmtaylor.com.git
         VIRTUAL_HOST: 'apps.dylanmtaylor.com,apps.dylanmtaylor.local'
 
@@ -90,6 +92,8 @@
       state: 'started'
       restart_policy: 'always'
       env:
+        GIT_NAME: "Dylan M. Taylor"
+        GIT_EMAIL: "dylan@dylanmtaylor.com"
         GIT_REPO: https://github.com/dylanmtaylor/fwc.dylanmtaylor.com.git
         VIRTUAL_HOST: 'fwc.dylanmtaylor.com,fwc.dylanmtaylor.local'
 
