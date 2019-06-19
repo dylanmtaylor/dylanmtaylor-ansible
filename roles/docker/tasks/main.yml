@@ -57,4 +57,46 @@
       volumes:
         - /var/www/dylanmtaylor.com/html/:/usr/share/nginx/html:ro
         
+  - name: Run apps website
+    docker_container:
+      name: 'apps-dylanmtaylor-com'
+      image: 'nginx'
+      state: 'started'
+      restart_policy: 'always'
+      env:
+        VIRTUAL_HOST: 'apps.dylanmtaylor.com,apps.dylanmtaylor.local'
+      volumes:
+        - /var/www/apps.dylanmtaylor.com/html/:/usr/share/nginx/html:ro
+        
+  - name: Run files website
+    docker_container:
+      name: 'files-dylanmtaylor-com'
+      image: 'nginx'
+      state: 'started'
+      restart_policy: 'always'
+      env:
+        VIRTUAL_HOST: 'files.dylanmtaylor.com,files.dylanmtaylor.local'
+      volumes:
+        - /var/www/files.dylanmtaylor.com/html/:/usr/share/nginx/html:ro
 
+  - name: Run fwc website
+    docker_container:
+      name: 'fwc-dylanmtaylor-com'
+      image: 'nginx'
+      state: 'started'
+      restart_policy: 'always'
+      env:
+        VIRTUAL_HOST: 'fwc.dylanmtaylor.com,fwc.dylanmtaylor.local'
+      volumes:
+        - /var/www/fwc.dylanmtaylor.com/html/:/usr/share/nginx/html:ro
+
+  - name: Run git website
+    docker_container:
+      name: 'git-dylanmtaylor-com'
+      image: 'nginx'
+      state: 'started'
+      restart_policy: 'always'
+      env:
+        VIRTUAL_HOST: 'git.dylanmtaylor.com,git.dylanmtaylor.local'
+      volumes:
+        - /var/www/git.dylanmtaylor.com/html/:/usr/share/nginx/html:ro
