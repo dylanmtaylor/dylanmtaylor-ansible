@@ -1,0 +1,16 @@
+---
+  - name: Install docker
+    shell: curl -sSL https://get.docker.com/ | sh
+    args:
+      creates: /usr/bin/docker
+
+  - name: Install pip
+    shell: curl https://bootstrap.pypa.io/get-pip.py | python
+    args:
+      creates: /usr/local/bin/pip
+
+  - name: Install docker-py
+    pip: name=docker-py version=1.1.0
+  
+  - name: Start Docker
+    service: name=docker state=started enabled=yes
