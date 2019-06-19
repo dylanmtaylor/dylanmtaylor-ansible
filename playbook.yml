@@ -1,5 +1,5 @@
 ---
-- name: Provision 'Dylan M Taylor' to new CentOS 7 server
+- name: Provision 'Dylan M Taylor' to new server
   hosts: dylanmtaylor-server
   remote_user: root
 
@@ -11,4 +11,3 @@
     - gitcheckout
     - cronjobs
     - lxqt-desktop
-    - mainline
