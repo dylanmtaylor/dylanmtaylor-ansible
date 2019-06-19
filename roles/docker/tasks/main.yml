@@ -76,7 +76,7 @@
       env:
         VIRTUAL_HOST: 'apps.dylanmtaylor.com,apps.dylanmtaylor.local'
       volumes:
-        - /var/www/apps.dylanmtaylor.com/html/:/usr/share/nginx/html:ro
+        - /var/www/apps.dylanmtaylor.com/html/:/var/www/html/:ro
 
   - name: Run files website
     docker_container:
@@ -98,7 +98,7 @@
       env:
         VIRTUAL_HOST: 'fwc.dylanmtaylor.com,fwc.dylanmtaylor.local'
       volumes:
-        - /var/www/fwc.dylanmtaylor.com/html/:/usr/share/nginx/html:ro
+        - /var/www/fwc.dylanmtaylor.com/html/:/var/www/html/:ro
       links:
         - 'php7-fpm-fwc'
         
