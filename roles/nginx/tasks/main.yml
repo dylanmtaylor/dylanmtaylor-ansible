@@ -2,8 +2,10 @@
   - name: Install texlive packages for resume generation
     apt: pkg={{item}} state=latest
     with_items:
-     - texlive-full
      - texlive-xetex
+     - texlive-fonts-extra
+     - texlive-fonts-recommended
+     - texlive-font-utils
 
   - name: Ensure rsync is installed on system
     apt: name=rsync state=latest
