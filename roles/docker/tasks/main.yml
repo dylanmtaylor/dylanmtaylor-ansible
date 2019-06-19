@@ -61,7 +61,16 @@
         VIRTUAL_HOST: 'www.dylanmtaylor.com,dylanmtaylor.com,dylanmtaylor.local,localhost'
       volumes:
         - /var/www/dylanmtaylor.com/html/:/usr/share/nginx/html:ro
-        
+
+  - name: Run PHP container for apps
+    docker_container:
+      name: 'php7-fpm-apps'
+      image: 'php:7-fpm'
+      state: 'started'
+      restart_policy: 'always'
+      volumes:
+        - /var/www/apps.dylanmtaylor.com/html/:/usr/share/nginx/html:ro
+
   - name: Run apps website
     docker_container:
       name: 'apps-dylanmtaylor-com'
@@ -72,7 +81,9 @@
         VIRTUAL_HOST: 'apps.dylanmtaylor.com,apps.dylanmtaylor.local'
       volumes:
         - /var/www/apps.dylanmtaylor.com/html/:/usr/share/nginx/html:ro
-        
+      links:
+        - 'php7-fpm-apps'
+
   - name: Run files website
     docker_container:
       name: 'files-dylanmtaylor-com'
@@ -84,6 +95,15 @@
       volumes:
         - /var/www/files.dylanmtaylor.com/html/:/usr/share/nginx/html:ro
 
+  - name: Run PHP container for fwc
+    docker_container:
+      name: 'php7-fpm-fwc'
+      image: 'php:7-fpm'
+      state: 'started'
+      restart_policy: 'always'
+      volumes:
+        - /var/www/fwc.dylanmtaylor.com/html/:/usr/share/nginx/html:ro
+
   - name: Run fwc website
     docker_container:
       name: 'fwc-dylanmtaylor-com'
@@ -94,7 +114,8 @@
         VIRTUAL_HOST: 'fwc.dylanmtaylor.com,fwc.dylanmtaylor.local'
       volumes:
         - /var/www/fwc.dylanmtaylor.com/html/:/usr/share/nginx/html:ro
-
+      links:
+        - 'php7-fpm-fwc'
   - name: Run git website
     docker_container:
       name: 'git-dylanmtaylor-com'
