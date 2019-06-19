@@ -1,6 +1,6 @@
 ---
   - name: Enable the crond service at boot time
-    service: name=crond state=started enabled=yes
+    service: name=cron state=started enabled=yes
 
   - name: Create cron job to update website contents
     cron: name="periodically update website contents" minute="*/5" job="cd /var/www/dylanmtaylor.com/html; git reset --hard HEAD^; git pull >/dev/null 2>&1"
