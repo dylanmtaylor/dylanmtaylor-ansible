@@ -1,10 +1,7 @@
 ---
 
   - name: Install the firewalld service
-    yum: name=firewalld state=latest
-
-  - name: Ensure iptables services are removed
-    yum: name=iptables-services state=removed
+    apt: name=firewalld state=latest
 
   - name: Make sure that the firewalld service is active (and enabled on boot)
     service: name=firewalld state=started enabled=yes
