@@ -5,6 +5,9 @@
      - texlive-full
      - texlive-xetex
 
+  - name: Ensure rsync is installed on system
+    apt: name=rsync state=latest
+
   - name: Configure php-fpm
     template: src=php.ini dest=/etc/php.ini
 
@@ -22,9 +25,6 @@
 
   - name: Nginx sites-available directory
     file: path=/etc/nginx/sites-available state=directory mode=0775
-
-  - name: Ensure rsync is installed on system
-    apt: name=rsync state=latest
 
   - name: Update the configuration files in sites-available
     synchronize: mode=push src=sites/ dest=/etc/nginx/sites-available
