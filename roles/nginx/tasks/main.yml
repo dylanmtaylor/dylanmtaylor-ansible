@@ -1,23 +1,9 @@
----
-  - name: Install EPEL repository
-    yum: name=epel-release state=latest
-
-  - name: Install the nginx repository
-    yum: name=http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm state=present
-
-  - name: Install the latest version of nginx
-    yum: name=nginx state=latest
-
-  - name: Install the latest version of php-fpm
-    yum: name=php-fpm state=latest
-    
+--- 
   - name: Install texlive packages for resume generation
-    yum: pkg={{item}} state=latest
+    apt: pkg={{item}} state=latest
     with_items:
-     - texlive-collection-xetex
-     - texlive-zapfding
-     - texlive-cite
-     - texlive-substr
+     - texlive-full
+     - texlive-xetex
 
   - name: Configure php-fpm
     template: src=php.ini dest=/etc/php.ini
@@ -33,32 +19,21 @@
 
   - name: Write the nginx configuration file
     template: src=nginx.conf dest=/etc/nginx/nginx.conf
-#    notify: Restart the nginx service
 
   - name: Nginx sites-available directory
     file: path=/etc/nginx/sites-available state=directory mode=0775
 
   - name: Ensure rsync is installed on system
-    yum: name=rsync state=latest
+    apt: name=rsync state=latest
 
   - name: Update the configuration files in sites-available
     synchronize: mode=push src=sites/ dest=/etc/nginx/sites-available
-#    notify: Remove old Nginx sites-enabled directory
 
   - name: Remove old Nginx sites-enabled directory
     file: path=/etc/nginx/sites-enabled state=absent
 
   - name: Nginx sites-enabled directory
     file: path=/etc/nginx/sites-enabled state=directory mode=0755
-#    notify:
-#      - Enable all available sites
-#      - Restart the nginx service
 
   - name: Enable all available sites
     shell: find /etc/nginx/sites-available/ -name '*.conf' -type f -exec ln -s {}  /etc/nginx/sites-enabled/ \;
-
-  - name: Restart the nginx service and enable it at boot time
-    service: name=nginx state=restarted enabled=yes
-
-  - name: Restart the php-fpm service and enable it at boot time
-    service: name=php-fpm state=restarted enabled=yes
