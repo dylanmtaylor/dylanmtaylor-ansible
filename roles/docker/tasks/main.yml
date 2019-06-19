@@ -18,7 +18,10 @@
     
   - name: Install docker python module
     pip: name=docker version=2.0.0
-  
+
+  - name: Start firewalld
+    service: name=firewalld state=started enabled=yes
+
   - name: Start Docker
     service: name=docker state=started enabled=yes
     
