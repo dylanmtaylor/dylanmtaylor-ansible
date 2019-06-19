@@ -35,6 +35,11 @@
       name: jwilder/nginx-proxy
       source: pull
 
+  - name: Pull PHP image
+    docker_image:
+      name: 'php:7-fpm'
+      source: pull
+
   - name: Run nginx-proxy
     docker_container:
       name: 'nginx-proxy'
