@@ -21,3 +21,13 @@
   
   - name: Start Docker
     service: name=docker state=started enabled=yes
+    
+  - name: Pull Nginx image
+    docker_image:
+      name: nginx
+      source: pull
+
+  - name: Pull Nginx proxy image
+    docker_image:
+      name: jwilder/nginx-proxy
+      source: pull
