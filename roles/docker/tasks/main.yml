@@ -5,6 +5,7 @@
       - git
       - wget
       - curl
+      - python
 
   - name: Install docker
     shell: curl -sSL https://get.docker.com/ | sh
