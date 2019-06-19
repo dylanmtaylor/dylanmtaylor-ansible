@@ -1,10 +1,10 @@
 ---
 
   - name: Upgrade all installed packages
-    yum: name=* state=latest
+    apt: name=* state=latest
     
-  - include: 'sshd.yml'
-  - include: 'sudoers.yml'
+#  - include: 'sshd.yml'
+#  - include: 'sudoers.yml'
   - include: 'firewall.yml'
-  - include: 'selinux.yml'
-  - include: 'automatic-updates.yml'
+#  - include: 'selinux.yml'
+#  - include: 'automatic-updates.yml'
