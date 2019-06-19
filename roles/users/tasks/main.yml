@@ -8,8 +8,8 @@
   - name: Add non-root user 'dylan'
     user: name=dylan comment="Dylan Taylor" uid=1000 group=dylan password=''
 
-  - name: Add 'dylan' to wheel group (system administrator)
-    command: usermod -aG wheel dylan
+  - name: Add 'dylan' to sudo group (system administrator)
+    command: usermod -aG sudo dylan
 
   - name: Copy my public SSH key for non-root user 'dylan'
     authorized_key: user=dylan key="{{ lookup('file', './files/authorized_keys') }}"
