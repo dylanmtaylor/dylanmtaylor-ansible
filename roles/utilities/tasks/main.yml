@@ -60,11 +60,11 @@
       path: /home/dylan/.bashrc
       line: '/opt/neofetch/neofetch --disable packages'
 
-  - name: install speedtest
-    shell: pip install speedtest-cli
-
-  - name: use pip to install the latest glances version
-    shell: bash -c 'pip install --upgrade setuptools glances[action,browser,cpuinfo,chart,docker,export,folders,gpu,ip,raid,snmp,web,wifi]; pip install --upgrade glances'
+  - name: Install setuptools
+    pip: name=speedtest-cli
+    
+  - name: Install setuptools
+    pip: name=glances
 
   - name: Install the latest version of jekyll and travis using rubygems
     shell: bash -c 'gem install jekyll travis bundler rubygems-update; update_rubygems'
