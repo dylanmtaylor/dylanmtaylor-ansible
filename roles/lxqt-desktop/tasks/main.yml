@@ -4,8 +4,9 @@
     with_items:
      - lxqt
      - tigervnc-standalone-server
+     - sddm
+     - xorg
      - pcmanfm-qt
-     - lightdm
      - openbox
      - firefox
      - xterm
