@@ -44,7 +44,6 @@
      - python-dev
      - python3-pip
      - wireless-tools
-     - openssl-dev
 
   - name: Checkout neofetch from git repository
     git:
