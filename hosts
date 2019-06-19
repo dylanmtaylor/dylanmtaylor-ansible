@@ -7,7 +7,7 @@
 #   - A hostname/ip can be a member of multiple groups
 
 [dylanmtaylor-server]
-45.67.218.241
+dylanmtaylor
 
 [dylanmtaylor-server:vars]
 ansible_python_interpreter=/usr/bin/python3
