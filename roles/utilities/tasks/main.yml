@@ -16,7 +16,6 @@
      - p7zip
      - pngcrush
      - setools
-     - sos
      - telnet
      - unzip
      - vim
