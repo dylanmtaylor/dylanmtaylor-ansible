@@ -30,7 +30,6 @@
      - iptraf-ng
      - nmon
      - yum-utils
-     - lm_sensors
      - strace
      - certbot
 
