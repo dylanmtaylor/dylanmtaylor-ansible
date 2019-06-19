@@ -46,6 +46,11 @@
       name: 'richarvey/nginx-php-fpm:latest'
       source: pull
 
+  - name: Restart service docker, in all cases
+    service:
+      name: docker
+      state: restarted
+
   - name: Run nginx-proxy
     docker_container:
       name: 'nginx-proxy'
