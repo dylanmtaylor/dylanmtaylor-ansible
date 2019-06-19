@@ -12,7 +12,10 @@
     shell: curl -sSL https://get.docker.com/ | sh
     args:
       creates: /usr/bin/docker
-
+      
+  - name: Install setuptools
+    pip: name=setuptools
+    
   - name: Install docker-py
     pip: name=docker-py version=1.1.0
   
