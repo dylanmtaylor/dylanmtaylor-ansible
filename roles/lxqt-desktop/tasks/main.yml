@@ -11,7 +11,6 @@
      - xterm
      - baobab
      - firewall-config
-     - vim-X11
 
   - name: Enable lightdm
     service: name=lightdm enabled=yes
