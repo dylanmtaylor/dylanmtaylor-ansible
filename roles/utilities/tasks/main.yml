@@ -76,6 +76,10 @@
     apt: pkg={{item}} state=latest
     with_items:
      - cockpit
+     - cockpit-docker
+     - cockpit-networkmanager
+     - cockpit-packagekit
+     - cockpit-storaged
 
   - name: Enable cockpit
     systemd:
