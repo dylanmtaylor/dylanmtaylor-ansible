@@ -1,9 +1,10 @@
 ---
 
-  - name: Install the latest versions of utility packages using yum
-    yum: pkg={{item}} state=latest
+  - name: Install the latest versions of utility packages using apt
+    apt: pkg={{item}} state=latest
     with_items:
      - asciidoc
+     - build-essential
      - byobu
      - curl
      - git
@@ -35,40 +36,17 @@
      - strace
      - certbot
 
-  # This could be done using yum but depending on the ansible version it's either  "'@Development Tools'" or  '@Development Tools'
-  - name: Install the 'Development Tools' group using yum
-    command: yum -y install '@Development Tools'
-    args:
-      creates: /usr/bin/svn
-
-  - name: Install SCL repository
-    yum: name=centos-release-scl state=latest
-
-  - name: Install rh-ruby24
-    yum: name=rh-ruby24 state=latest
-
-  - name: Enable ruby 2.4 for root
-    lineinfile:
-      path: /root/.bashrc
-      line: 'source scl_source enable rh-ruby24'
-
-  - name: Enable ruby 2.4 for dylan
-    lineinfile:
-      path: /home/dylan/.bashrc
-      line: 'source scl_source enable rh-ruby24'
+  - name: Install ruby
+    apt: name=ruby state=latest
 
   - name: Install the latest versions of additional development packages using yum
-    yum: pkg={{item}} state=latest
+    apt: pkg={{item}} state=latest
     with_items:
      - gcc
      - php-cli
      - python-devel
      - python-pip
      - wireless-tools
-     - rh-ruby24-build
-     - rh-ruby24-ruby-devel
-     - rh-ruby24-rubygems-devel
-     - rh-ruby24-rubygem-bundler
      - openssl-devel
 
   - name: Checkout neofetch from git repository
@@ -86,9 +64,6 @@
       path: /home/dylan/.bashrc
       line: '/opt/neofetch/neofetch --disable packages'
 
-  - name: upgrade pip
-    shell: pip install --upgrade pip
-
   - name: install speedtest
     shell: pip install speedtest-cli
 
@@ -96,75 +71,15 @@
     shell: bash -c 'pip install --upgrade setuptools glances[action,browser,cpuinfo,chart,docker,export,folders,gpu,ip,raid,snmp,web,wifi]; pip install --upgrade glances'
 
   - name: Install the latest version of jekyll and travis using rubygems
-    shell: bash -c 'source scl_source enable rh-ruby24; gem install jekyll travis bundler rubygems-update; update_rubygems'
-
-  - name: Remove immutable bit from /usr/lib/udev/rules.d/60-net.rules
-    command: chattr -i /usr/lib/udev/rules.d/60-net.rules
+    shell: bash -c 'gem install jekyll travis bundler rubygems-update; update_rubygems'
 
   - name: Install cockpit # and docker
-    yum: pkg={{item}} state=latest
+    apt: pkg={{item}} state=latest
     with_items:
      - cockpit
-     - cockpit-doc
-     - cockpit-storaged
-     - cockpit-networkmanager
-     - cockpit-packagekit
-     - cockpit-selinux
-     - cockpit-pcp
-     - cockpit-sosreport
-     # - cockpit-docker
-     # - docker
 
   - name: Enable cockpit
     systemd:
       name: cockpit.socket
       state: started
       enabled: True
-
-  # - name: Newer pyOpenSSL
-  #   command: yum -y install https://cbs.centos.org/kojifiles/packages/pyOpenSSL/17.3.0/3.el7/noarch/python2-pyOpenSSL-17.3.0-3.el7.noarch.rpm
-
-  - name: If Server with GUI install, remove useless packages
-    yum: pkg={{item}} state=absent
-    with_items:
-     - alsa-firmware
-     - cheese
-     - gnome-software
-     - gnome-weather
-     - empathy
-     - totem
-     - cups
-     - gutenprint
-     - ghostscript
-     - evince
-     - gnome-font-viewer
-     - gnome-user-docs
-     - gnome-color-manager
-     - gnome-screenshot
-     - gnome-contacts
-     - gnome-dictionary
-     - gnome-abrt
-     - gnome-clocks
-     - gnome-boxes
-     - system-config-printer
-     - gucharmap
-     - vinagre
-     - eog
-     - orca
-     - icedtea-web
-     - java
-     - java-1.8.0-openjdk-headless
-     - libpinyin
-     - libhangul
-     - libchewing
-     - libkkc-data
-     - cjkuni-uming-fonts
-     - wqy-zenhei-fonts
-     - nhn-nanum-gothic-fonts
-     - skkdic
-     - webkitgtk3
-     - iwl7265-firmware
-     - iwl3160-firmware
-     - iwl7260-firmware
-     - libpurple
-     - openscap # not really useless, but takes up a lot of disk space and I don't use it
