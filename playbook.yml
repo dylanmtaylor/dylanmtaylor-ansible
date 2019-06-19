@@ -9,5 +9,5 @@
     - nginx
     - gitcheckout
     - cronjobs
-#    - security
     - utilities
+    - lxqt-desktop
