@@ -17,7 +17,7 @@
     pip: name=setuptools
     
   - name: Install docker python module
-    pip: name=docker
+    pip: name=docker version=2.0.0
   
   - name: Start Docker
     service: name=docker state=started enabled=yes
