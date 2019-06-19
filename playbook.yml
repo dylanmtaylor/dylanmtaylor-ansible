@@ -7,7 +7,7 @@
     - users
     - docker
     - nginx
-#    - security
-    - utilities
     - gitcheckout
     - cronjobs
+#    - security
+    - utilities
