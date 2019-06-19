@@ -1,2 +1,20 @@
 ---
-  - include: website.yml
+  - name: Ensure directory for website exists
+    file: path=/var/www/dylanmtaylor.com/html state=directory
+
+  - name: Checkout latest version of website files from github
+    git: repo=https://github.com/dylanmtaylor/dylanmtaylor.github.io.git
+         dest=/var/www/dylanmtaylor.com/html
+         version=HEAD
+         update=yes
+         force=yes
+         
+  - name: Ensure directory for resume exists
+    file: path=/root/Dylan-Resume state=directory
+
+  - name: Checkout latest version of resume files from github
+    git: repo=https://github.com/dylanmtaylor/Dylan-Resume.git
+         dest=/root/Dylan-Resume
+         version=HEAD
+         update=yes
+         force=yes
