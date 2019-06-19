@@ -1,6 +1,6 @@
 --- 
   - name: Install texlive packages for resume generation
-    apt: pkg={{item}} state=latest
+    apt: pkg={{item}} state=latest update_cache=yes
     with_items:
      - texlive-xetex
      - texlive-fonts-extra
