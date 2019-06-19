@@ -4,29 +4,15 @@
     with_items:
      - lubuntu-core
      - tigervnc-standalone-server
-#     - sddm
-#     - xorg
-#     - pcmanfm-qt
-#     - openbox
      - firefox
-#     - xterm
      - baobab
-#     - firewall-config
-
-#  - name: Enable sddm
-#    service: name=sddm enabled=yes
 
   - name: Set default target to graphical
     command: systemctl set-default graphical.target
-
-  # - name: Make sure root has .vnc directory
-  #   file: path=/root/.vnc/ state=directory mode=0755
-  #
-  # - name: Configure vnc xstartup for root
-  #   template: src=xstartup dest=/root/.vnc/xstartup
 
   - name: Make sure dylan has .vnc directory
     file: path=/home/dylan/.vnc/ state=directory mode=0755
 
   - name: Configure vnc xstartup for dylan
     template: src=xstartup dest=/home/dylan/.vnc/xstartup
+

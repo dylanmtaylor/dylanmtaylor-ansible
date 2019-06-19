@@ -9,20 +9,11 @@
   - name: Ensure rsync is installed on system
     apt: name=rsync state=latest
 
-  - name: Configure php-fpm
-    template: src=php.ini dest=/etc/php.ini
-
   - name: Make directory for website contents
     file: path=/var/www/dylanmtaylor.com/html state=directory mode=0755
 
   - name: Make directory for miscellaneous files
     file: path=/var/www/files.dylanmtaylor.com/html state=directory mode=0755
-
-  - name: Remove Nginx default.conf
-    file: path=/etc/nginx/conf.d/default.conf state=absent
-
-#  - name: Write the nginx configuration file
-#    template: src=nginx.conf dest=/etc/nginx/nginx.conf
 
   - name: Nginx sites-available directory
     file: path=/etc/nginx/sites-available state=directory mode=0775
