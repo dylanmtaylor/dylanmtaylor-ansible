@@ -99,4 +99,5 @@
       env:
         VIRTUAL_HOST: 'git.dylanmtaylor.com,git.dylanmtaylor.local'
       volumes:
-        - /var/www/git.dylanmtaylor.com/html/:/usr/share/nginx/html:ro
+        - /etc/nginx/sites-available/git.dylanmtaylor.com.conf:/etc/nginx/conf.d/site.conf:ro
+        
