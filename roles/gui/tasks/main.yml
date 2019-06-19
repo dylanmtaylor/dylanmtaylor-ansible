@@ -3,6 +3,7 @@
     apt: pkg={{item}} state=latest
     with_items:
      - lubuntu-core
+     - xorg
      - tigervnc-standalone-server
      - firefox
      - baobab
