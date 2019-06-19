@@ -1,29 +1,8 @@
 ---
-  - name: Install EPEL repository
-    yum: name=epel-release state=latest
-
-  - name: Install the 'X Window System' group
-    yum:
-      name: "@X Window System"
-      state: present
-
   - name: Install some select desktop packages
-    yum: pkg={{item}} state=latest
+    apt: pkg={{item}} state=latest
     with_items:
-     - lxqt-about
-     - lxqt-common
-     - lxqt-config
-     - lxqt-globalkeys
-     - lxqt-notificationd
-     - lxqt-openssh-askpass
-     - lxqt-panel
-     - lxqt-policykit
-     - lxqt-qtplugin
-     - lxqt-runner
-     - lxqt-session
-     - lxqt-sudo
-     - network-manager-applet
-     - nm-connection-editor
+     - lxqt
      - tigervnc-server
      - pcmanfm-qt
      - qterminal-qt5
@@ -34,7 +13,6 @@
      - baobab
      - firewall-config
      - vim-X11
-     - lximage-qt
 
   - name: Enable lightdm
     service: name=lightdm enabled=yes
