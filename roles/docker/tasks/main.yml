@@ -31,3 +31,27 @@
     docker_image:
       name: jwilder/nginx-proxy
       source: pull
+
+  - name: Run nginx-proxy
+    docker_container:
+      name: 'nginx-proxy'
+      image: 'jwilder/nginx-proxy'
+      state: 'started'
+      restart_policy: 'always'
+      ports:
+        - "80:80"
+      volumes:
+        - /var/run/docker.sock:/tmp/docker.sock:ro
+        
+  - name: Run main website
+    docker_container:
+      name: 'www-dylanmtaylor-com'
+      image: 'nginx'
+      state: 'started'
+      restart_policy: 'always'
+      env:
+        VIRTUAL_HOST: 'www.dylanmtaylor.com,dylanmtaylor.com'
+      volumes:
+        - /var/www/dylanmtaylor.com/html/:/usr/share/nginx/html:ro
+        
+
