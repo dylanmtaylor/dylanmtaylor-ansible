@@ -39,6 +39,11 @@
     docker_image:
       name: 'php:7-fpm'
       source: pull
+      
+  - name: Pull nginx-php-fpm image
+    docker_image:
+      name: 'richarvey/nginx-php-fpm:latest'
+      source: pull
 
   - name: Run nginx-proxy
     docker_container:
@@ -62,27 +67,16 @@
       volumes:
         - /var/www/dylanmtaylor.com/html/:/usr/share/nginx/html:ro
 
-  - name: Run PHP container for apps
-    docker_container:
-      name: 'php7-fpm-apps'
-      image: 'php:7-fpm'
-      state: 'started'
-      restart_policy: 'always'
-      volumes:
-        - /var/www/apps.dylanmtaylor.com/html/:/usr/share/nginx/html:ro
-
   - name: Run apps website
     docker_container:
       name: 'apps-dylanmtaylor-com'
-      image: 'nginx'
+      image: 'richarvey/nginx-php-fpm:latest'
       state: 'started'
       restart_policy: 'always'
       env:
         VIRTUAL_HOST: 'apps.dylanmtaylor.com,apps.dylanmtaylor.local'
       volumes:
         - /var/www/apps.dylanmtaylor.com/html/:/usr/share/nginx/html:ro
-      links:
-        - 'php7-fpm-apps'
 
   - name: Run files website
     docker_container:
@@ -95,19 +89,10 @@
       volumes:
         - /var/www/files.dylanmtaylor.com/html/:/usr/share/nginx/html:ro
 
-  - name: Run PHP container for fwc
-    docker_container:
-      name: 'php7-fpm-fwc'
-      image: 'php:7-fpm'
-      state: 'started'
-      restart_policy: 'always'
-      volumes:
-        - /var/www/fwc.dylanmtaylor.com/html/:/usr/share/nginx/html:ro
-
   - name: Run fwc website
     docker_container:
       name: 'fwc-dylanmtaylor-com'
-      image: 'nginx'
+      image: 'richarvey/nginx-php-fpm:latest'
       state: 'started'
       restart_policy: 'always'
       env:
