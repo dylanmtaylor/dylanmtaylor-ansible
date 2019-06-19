@@ -45,20 +45,20 @@
      - python3-pip
      - wireless-tools
 
-  - name: Checkout neofetch from git repository
-    git:
-      repo: https://github.com/dylanaraps/neofetch.git
-      dest: /opt/neofetch
+  - name: Install neofetch
+    apt: pkg={{item}} state=latest
+    with_items:
+     - neofetch
 
   - name: Enable neofetch on login for root
     lineinfile:
       path: /root/.bashrc
-      line: '#/opt/neofetch/neofetch --disable packages'
+      line: '#neofetch --disable packages'
 
   - name: Enable neofetch on login for dylan
     lineinfile:
       path: /home/dylan/.bashrc
-      line: '/opt/neofetch/neofetch --disable packages'
+      line: 'neofetch --disable packages'
 
   - name: Install speedtest-cli
     pip: name=speedtest-cli
