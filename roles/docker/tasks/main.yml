@@ -80,9 +80,18 @@
       state: 'started'
       restart_policy: 'always'
       env:
+        GIT_REPO: https://github.com/dylanmtaylor/apps.dylanmtaylor.com.git
         VIRTUAL_HOST: 'apps.dylanmtaylor.com,apps.dylanmtaylor.local'
-      volumes:
-        - /var/www/apps.dylanmtaylor.com/html/:/var/www/html/:ro
+
+  - name: Run fwc website
+    docker_container:
+      name: 'fwc-dylanmtaylor-com'
+      image: 'richarvey/nginx-php-fpm:latest'
+      state: 'started'
+      restart_policy: 'always'
+      env:
+        GIT_REPO: https://github.com/dylanmtaylor/fwc.dylanmtaylor.com.git
+        VIRTUAL_HOST: 'fwc.dylanmtaylor.com,fwc.dylanmtaylor.local'
 
   - name: Run files website
     docker_container:
@@ -95,16 +104,6 @@
       volumes:
         - /var/www/files.dylanmtaylor.com/html/:/usr/share/nginx/html:ro
 
-  - name: Run fwc website
-    docker_container:
-      name: 'fwc-dylanmtaylor-com'
-      image: 'richarvey/nginx-php-fpm:latest'
-      state: 'started'
-      restart_policy: 'always'
-      env:
-        VIRTUAL_HOST: 'fwc.dylanmtaylor.com,fwc.dylanmtaylor.local'
-      volumes:
-        - /var/www/fwc.dylanmtaylor.com/html/:/var/www/html/:ro
         
   - name: Run git website
     docker_container:
