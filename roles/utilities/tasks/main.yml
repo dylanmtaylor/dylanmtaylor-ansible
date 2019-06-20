@@ -13,7 +13,7 @@
      - ioping
      - lshw
      - nmap
-     - p7zip
+     - p7zip-full
      - pngcrush
      - setools
      - telnet
