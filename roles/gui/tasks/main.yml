@@ -7,6 +7,13 @@
      - tigervnc-standalone-server
      - firefox
      - baobab
+     - file-roller
+     - galculator
+     - hardinfo
+     - hexchat
+     - imagemagick
+     - synaptic
+     - transmission-gtk
 
   - name: Set default target to graphical
     command: systemctl set-default graphical.target
