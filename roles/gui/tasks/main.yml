@@ -12,10 +12,12 @@
      - hardinfo
      - hexchat
      - imagemagick
-     - lubuntu-icon-theme
      - lxappearance
      - synaptic
      - transmission-gtk
+     
+  - name: Icon theme
+    apt: pkg=adwaita-icon-theme-full state=latest
 
   - name: Set default target to graphical
     command: systemctl set-default graphical.target
