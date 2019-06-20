@@ -3,7 +3,7 @@
   - name: Upgrade all installed packages
     apt: name=* state=latest
     
-#  - include: 'sshd.yml'
+  - include: 'sshd.yml'
 #  - include: 'sudoers.yml'
   - include: 'firewall.yml'
 #  - include: 'selinux.yml'
