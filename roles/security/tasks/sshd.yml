@@ -4,5 +4,5 @@
     notify: Restart the sshd service
 
   - name: Restart the sshd service (and make sure it's enabled on boot)
-    service: name=sshd state=restarted enabled=yes
+    service: name=ssh state=restarted enabled=yes
 
