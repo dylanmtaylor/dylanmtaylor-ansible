@@ -21,6 +21,9 @@
   - name: Set default target to graphical
     command: systemctl set-default graphical.target
 
+  - name: Start lightdm
+    service: name=lightdm state=started enabled=yes
+
   - name: Make sure dylan has .vnc directory
     file: path=/home/dylan/.vnc/ state=directory mode=0755
 
