@@ -1,21 +1,24 @@
 ---
-  - name: Install some select desktop packages
-    apt: pkg={{item}} state=latest
-    with_items:
-     - lubuntu-core
-     - xorg
-     - tigervnc-standalone-server
-     - firefox
-     - baobab
-     - file-roller
-     - galculator
-     - hardinfo
-     - hexchat
-     - imagemagick
-     - lxappearance
-     - synaptic
-     - transmission-gtk
-     
+  - name: Install desktop packages
+    apt:
+      pkg:
+        - lubuntu-core
+        - xorg
+        - tigervnc-standalone-server
+        - firefox
+        - baobab
+        - file-roller
+        - galculator
+        - hardinfo
+        - hexchat
+        - imagemagick
+        - lxappearance
+        - synaptic
+        - transmission-gtk
+      state: latest
+      update_cache: yes
+
+
   - name: Icon theme
     apt: pkg=adwaita-icon-theme-full state=latest
 

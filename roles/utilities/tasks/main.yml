@@ -1,54 +1,48 @@
 ---
 
   - name: Install the latest versions of utility packages using apt
-    apt: pkg={{item}} state=latest
-    with_items:
-     - asciidoc
-     - build-essential
-     - byobu
-     - curl
-     - git
-     - htop
-     - iotop
-     - ioping
-     - lshw
-     - nmap
-     - p7zip-full
-     - pngcrush
-     - setools
-     - telnet
-     - unzip
-     - vim
-     - wget
-     - fio
-     - tcpdump
-     - duplicity
-     - pv
-     - mc
-     - glances
-     - iftop
-     - iptraf-ng
-     - nmon
-     - yum-utils
-     - strace
-     - certbot
+    apt:
+      pkg:
+        - asciidoc
+        - build-essential
+        - byobu
+        - certbot
+        - curl
+        - duplicity
+        - fio
+        - gcc
+        - git
+        - glances
+        - htop
+        - iftop
+        - ioping
+        - iotop
+        - iptraf-ng
+        - lshw
+        - mc
+        - neofetch
+        - nmap
+        - nmon
+        - p7zip-full
+        - php-cli
+        - pngcrush
+        - pv
+        - python3-pip
+        - python-dev
+        - setools
+        - strace
+        - tcpdump
+        - telnet
+        - unzip
+        - vim
+        - wget
+        - wireless-tools
+        - yum-utils
+      state: latest
+      update_cache: yes
 
   - name: Install ruby
     apt: name=ruby state=latest
-
-  - name: Install the latest versions of additional development packages using yum
-    apt: pkg={{item}} state=latest
-    with_items:
-     - gcc
-     - php-cli
-     - python-dev
-     - python3-pip
-     - wireless-tools
-
-  - name: Install neofetch
-    apt: pkg={{item}} state=latest
-    with_items:
-     - neofetch
 
   - name: Enable neofetch on login for root
     lineinfile:
@@ -67,18 +61,18 @@
     pip: name=glances
 
   - name: Install the latest version of jekyll using apt
-    apt: pkg={{item}} state=latest
-    with_items:
-     - jekyll
+    apt: pkg=jekyll state=latest
 
   - name: Install cockpit
-    apt: pkg={{item}} state=latest
-    with_items:
-     - cockpit
-     - cockpit-docker
-     - cockpit-networkmanager
-     - cockpit-packagekit
-     - cockpit-storaged
+    apt:
+      pkg:
+        - cockpit
+        - cockpit-docker
+        - cockpit-networkmanager
+        - cockpit-packagekit
+        - cockpit-storaged
+      state: latest
+      update_cache: yes
 
   - name: Enable cockpit
     systemd:

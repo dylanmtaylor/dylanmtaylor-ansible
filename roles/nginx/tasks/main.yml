@@ -1,13 +1,13 @@
 --- 
-  - name: Install texlive packages for resume generation
-    apt: pkg={{item}} state=latest update_cache=yes
-    with_items:
-     - texlive-xetex
-     - texlive-fonts-recommended
-     - texlive-font-utils
-
-  - name: Ensure rsync is installed on system
-    apt: name=rsync state=latest
+  - name: Install xetex packages for resume generation and rsync
+    apt:
+      pkg:
+        - rsync
+        - texlive-xetex
+        - texlive-fonts-recommended
+        - texlive-font-utils
+      state: latest
+      update_cache: yes
 
   - name: Make directory for website contents
     file: path=/var/www/dylanmtaylor.com/html state=directory mode=0755
