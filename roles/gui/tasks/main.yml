@@ -2,7 +2,7 @@
   - name: Install desktop packages
     apt:
       pkg:
-        - lubuntu-core
+        - lubuntu-desktop
         - xorg
         - tigervnc-standalone-server
         - firefox
@@ -17,10 +17,6 @@
         - transmission-gtk
       state: latest
       update_cache: yes
-
-
-  - name: Icon theme
-    apt: pkg=adwaita-icon-theme-full state=latest
 
   - name: Set default target to graphical
     command: systemctl set-default graphical.target
