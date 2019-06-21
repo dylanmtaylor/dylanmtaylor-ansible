@@ -34,6 +34,13 @@
       permanent: true
       state: enabled
 
+  - name: Allow vnc in the dmz zone
+    firewalld:
+      zone: dmz
+      port: 5901/tcp
+      permanent: true
+      state: enabled
+
   - name: Set dmz as default policy
     command: firewall-cmd --set-default-zone=dmz
 
