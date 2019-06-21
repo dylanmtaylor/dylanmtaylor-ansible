@@ -25,8 +25,8 @@
     service: name=lightdm state=started enabled=yes
 
   - name: Make sure dylan has .vnc directory
-    file: path=/home/dylan/.vnc/ state=directory mode=0755
+    file: path=/home/dylan/.vnc/ state=directory mode=0755 owner=dylan
 
   - name: Configure vnc xstartup for dylan
-    template: src=xstartup dest=/home/dylan/.vnc/xstartup
+    template: src=xstartup dest=/home/dylan/.vnc/xstartup owner=dylan
 
