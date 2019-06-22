@@ -13,3 +13,6 @@
 
   - name: Copy my public SSH key for non-root user 'dylan'
     authorized_key: user=dylan key="{{ lookup('file', './files/authorized_keys') }}"
+
+  - name: Set dylan's shell to bash
+    command: chsh -s /bin/bash dylan
