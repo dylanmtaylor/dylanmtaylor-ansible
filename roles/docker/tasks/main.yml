@@ -123,7 +123,7 @@
       restart_policy: 'always'
       env:
         VIRTUAL_HOST: 'git.dylanmtaylor.com,git.dylanmtaylor.local'
-        REDIRECT_TARGET: 'https://github.com/dylanmtaylor'
+        REDIRECT_TARGET: 'https://gitlab.com/dylanmtaylor'
         
   - name: Run blog website
     docker_container:
