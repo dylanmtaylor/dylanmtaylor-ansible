@@ -1,0 +1,19 @@
+# This simple GitLab CI file checks out and deploys my Ansible playbook
+image: ubuntu:18.04
+
+before_script:
+  - apt-get update
+  - apt-get -y install software-properties-common
+  - apt-add-repository --yes --update ppa:ansible/ansible
+  - apt-get -y install ansible git rsync
+  - mkdir ~/.ssh
+  - echo "$PRIVATE_KEY" > ~/.ssh/id_rsa
+  - chown -R $USER:$USER ~/.ssh
+  - chmod 0600 ~/.ssh/*
+  - chmod 0700 ~/.ssh/
+  - echo "$IP_ADDRESS dylanmtaylor" >> /etc/hosts 
+
+ansible_deploy:
+  stage: deploy
+  script:
+    - ansible-playbook playbook.yml
