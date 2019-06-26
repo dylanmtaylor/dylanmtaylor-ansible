@@ -16,4 +16,6 @@ before_script:
 ansible_deploy:
   stage: deploy
   script:
+    - git clone https://gitlab.com/dylanmtaylor/dylanmtaylor-ansible.git
+    - cd dylanmtaylor-ansible
     - ansible-playbook playbook.yml
