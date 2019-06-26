@@ -1,3 +1,6 @@
 ---
   - name: Clean up apt
     shell: apt-get clean all
+
+  - name: Make sure unattended-upgrades started and enabled
+    service: name=unattended-upgrades state=started enabled=yes
