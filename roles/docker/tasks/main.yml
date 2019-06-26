@@ -85,7 +85,7 @@
       env:
         GIT_NAME: "Dylan M. Taylor"
         GIT_EMAIL: "dylan@dylanmtaylor.com"
-        GIT_REPO: https://github.com/dylanmtaylor/apps.dylanmtaylor.com.git
+        GIT_REPO: https://gitlab.com/dylanmtaylor/apps.dylanmtaylor.com.git
         VIRTUAL_HOST: 'apps.dylanmtaylor.com,apps.dylanmtaylor.local'
       volumes:
         - /var/www/errors/404.html:/var/www/errors/404.html:ro
@@ -99,7 +99,7 @@
       env:
         GIT_NAME: "Dylan M. Taylor"
         GIT_EMAIL: "dylan@dylanmtaylor.com"
-        GIT_REPO: https://github.com/dylanmtaylor/fwc.dylanmtaylor.com.git
+        GIT_REPO: https://gitlab.com/dylanmtaylor/fwc.dylanmtaylor.com.git
         VIRTUAL_HOST: 'fwc.dylanmtaylor.com,fwc.dylanmtaylor.local'
       volumes:
         - /var/www/errors/404.html:/var/www/errors/404.html:ro

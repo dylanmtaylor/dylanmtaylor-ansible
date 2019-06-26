@@ -8,8 +8,8 @@
   - name: Ensure directory for resume exists
     file: path=/root/Dylan-Resume state=directory
 
-  - name: Checkout latest version of resume files from github
-    git: repo=https://github.com/dylanmtaylor/Dylan-Resume.git
+  - name: Checkout latest version of resume files from gitlab
+    git: repo=https://gitlab.com/dylanmtaylor/Dylan-Resume.git
          dest=/root/Dylan-Resume
          version=HEAD
          update=yes
