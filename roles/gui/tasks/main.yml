@@ -26,6 +26,12 @@
   - name: Start lightdm
     service: name=lightdm state=started enabled=yes
 
+  - name: root .xsession file
+    template: src=xsession dest=/root/.xsession owner=root
+
+  - name: dylan .xsession file
+    template: src=xsession dest=/home/dylan/.xsession owner=dylan
+
   - name: Set new_cursors value to false
     command: sed -e 's/^new_cursors=true/new_cursors=false/g' -i /etc/xrdp/xrdp.ini
 
