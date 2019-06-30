@@ -15,6 +15,8 @@
         - lxappearance
         - synaptic
         - transmission-gtk
+        - xrdp
+        - xorgxrdp
       state: latest
       update_cache: yes
 
@@ -24,9 +26,8 @@
   - name: Start lightdm
     service: name=lightdm state=started enabled=yes
 
-  - name: Make sure dylan has .vnc directory
-    file: path=/home/dylan/.vnc/ state=directory mode=0755 owner=dylan
+  - name: Set new_cursors value to false
+    command: sed -e 's/^new_cursors=true/new_cursors=false/g' -i /etc/xrdp/xrdp.ini
 
-  - name: Configure vnc xstartup for dylan
-    template: src=xstartup dest=/home/dylan/.vnc/xstartup owner=dylan
-
+  - name: Start xrdp
+    service: name=xrdp state=started enabled=yes
