@@ -23,9 +23,6 @@
   - name: Set default target to graphical
     command: systemctl set-default graphical.target
 
-  - name: Start lightdm
-    service: name=lightdm state=started enabled=yes
-
   - name: root .xsession file
     template: src=xsession dest=/root/.xsession owner=root
 
