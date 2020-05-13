@@ -37,7 +37,6 @@
         - vim
         - wget
         - wireless-tools
-        - yum-utils
       state: latest
       update_cache: yes
 
