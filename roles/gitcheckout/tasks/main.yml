@@ -8,7 +8,10 @@
     file: path=/var/www/dylanmtaylor.com/html state=directory
 
   - name: Retrieve latest version of website files
-    shell: curl -Ls https://gitlab.com/dylanmtaylor/dylanmtaylor.gitlab.io/-/jobs/artifacts/master/download?job=build_blog > /tmp/site.zip && unzip -o /tmp/site.zip -d /var/www/dylanmtaylor.com/html/ && rm /tmp/site.zip
+    unarchive:
+      src: https://gitlab.com/dylanmtaylor/dylanmtaylor.gitlab.io/-/jobs/artifacts/master/download?job=build_blog
+      dest: /var/www/dylanmtaylor.com/html/
+      remote_src: yes
          
   - name: Ensure directory for resume exists
     file: path=/root/Dylan-Resume state=directory
