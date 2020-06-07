@@ -1,9 +1,14 @@
 ---
+  - name: Clear out existing website files
+    file:
+      state: absent
+      path: "/var/www/dylanmtaylor.com/html/"
+
   - name: Ensure directory for website exists
     file: path=/var/www/dylanmtaylor.com/html state=directory
 
   - name: Retrieve latest version of website files
-    shell: rm -rf /var/www/dylanmtaylor.com/html/* &&  curl -Ls https://gitlab.com/dylanmtaylor/dylanmtaylor.gitlab.io/-/jobs/artifacts/master/download?job=build_blog > /tmp/site.zip && unzip -o /tmp/site.zip -d /var/www/dylanmtaylor.com/html/ && rm /tmp/site.zip
+    shell: curl -Ls https://gitlab.com/dylanmtaylor/dylanmtaylor.gitlab.io/-/jobs/artifacts/master/download?job=build_blog > /tmp/site.zip && unzip -o /tmp/site.zip -d /var/www/dylanmtaylor.com/html/ && rm /tmp/site.zip
          
   - name: Ensure directory for resume exists
     file: path=/root/Dylan-Resume state=directory
