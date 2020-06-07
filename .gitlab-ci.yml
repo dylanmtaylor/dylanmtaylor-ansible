@@ -1,11 +1,8 @@
 # This simple GitLab CI file checks out and deploys my Ansible playbook
-image: ubuntu:latest
+image: archlinux:latest
 
 before_script:
-  - apt-get update
-  - apt-get -y install software-properties-common
-  - apt-add-repository --yes --update ppa:ansible/ansible
-  - apt-get -y install ansible git rsync
+  - pacman -S ansible git rsync
   - mkdir ~/.ssh
   - echo "$PRIVATE_KEY" > ~/.ssh/id_rsa
   - chown -R $USER:$USER ~/.ssh
