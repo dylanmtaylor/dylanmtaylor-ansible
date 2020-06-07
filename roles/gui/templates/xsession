@@ -1,1 +1,1 @@
-lxsession -s Lubuntu -e LXDE
+startlxqt
