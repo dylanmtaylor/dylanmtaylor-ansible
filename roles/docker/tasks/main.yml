@@ -74,6 +74,7 @@
       env:
         VIRTUAL_HOST: 'www.dylanmtaylor.com,dylanmtaylor.com,dylanmtaylor.local,localhost'
       volumes:
+        - /var/www/files.dylanmtaylor.com/html/:/var/www/files.dylanmtaylor.com/html/:ro
         - /var/www/dylanmtaylor.com/html/:/var/www/html/:ro
         - /var/www/errors/404.html:/var/www/errors/404.html:ro
 
