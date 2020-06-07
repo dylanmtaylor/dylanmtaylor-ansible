@@ -1,6 +1,7 @@
 ---
-  - name: Clean up apt
-    shell: apt-get clean all
+  - name: Remove useless packages from the cache
+    apt:
+      autoclean: yes
 
   - name: Make sure unattended-upgrades started and enabled
     service: name=unattended-upgrades state=started enabled=yes

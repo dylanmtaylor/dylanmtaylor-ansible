@@ -77,6 +77,7 @@
       name: cockpit.socket
       state: started
       enabled: True
-      
-  - name: Run apt-get clean all
-    shell: apt-get clean all
+  
+  - name: Remove useless packages from the cache
+    apt:
+      autoclean: yes
