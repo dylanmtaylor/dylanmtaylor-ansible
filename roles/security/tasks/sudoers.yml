@@ -1,4 +1,0 @@
----
-
-  - name: Configure sudoers
-    template: src=sudoers dest=/etc/sudoers

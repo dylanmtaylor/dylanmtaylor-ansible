@@ -4,7 +4,4 @@
     apt: name=* state=latest
     
   - include: 'sshd.yml'
-#  - include: 'sudoers.yml'
   - include: 'firewall.yml'
-#  - include: 'selinux.yml'
-#  - include: 'automatic-updates.yml'
