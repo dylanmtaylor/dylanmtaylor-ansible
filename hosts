@@ -6,8 +6,8 @@
 #   - You can enter hostnames or ip addresses
 #   - A hostname/ip can be a member of multiple groups
 
-[dylanmtaylor-server]
+[servers]
 dylanmtaylor
 
-[dylanmtaylor-server:vars]
+[servers:vars]
 ansible_python_interpreter=/usr/bin/python3
