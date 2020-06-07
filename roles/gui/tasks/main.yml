@@ -10,7 +10,6 @@
         - hexchat
         - imagemagick
         - lxappearance
-        - synaptic
         - xrdp
         - xorgxrdp
       state: latest
