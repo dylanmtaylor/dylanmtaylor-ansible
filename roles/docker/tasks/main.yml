@@ -20,7 +20,7 @@
     pip: name=setuptools
     
   - name: Install docker python module
-    pip: name=docker
+    pip: name=docker state=latest
 
   - name: Start firewalld
     service: name=firewalld state=started enabled=yes
