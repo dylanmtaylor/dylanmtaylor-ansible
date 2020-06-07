@@ -10,6 +10,7 @@
         - fio
         - gcc
         - git
+        - glances
         - htop
         - iftop
         - ioping
