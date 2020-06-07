@@ -5,10 +5,8 @@
       pkg:
         - asciidoc
         - build-essential
-        - byobu
         - certbot
         - curl
-        - duplicity
         - fio
         - gcc
         - git
@@ -19,29 +17,22 @@
         - iotop
         - iptraf-ng
         - lshw
-        - mc
         - neofetch
         - nmap
         - nmon
         - p7zip-full
-        - php-cli
         - pngcrush
         - pv
-        - python3-pip
-        - python-dev
         - setools
         - strace
+        - speedtest-cli
         - tcpdump
         - telnet
         - unzip
         - vim
         - wget
-        - wireless-tools
       state: latest
       update_cache: yes
-
-  - name: Install ruby
-    apt: name=ruby state=latest
 
   - name: Enable neofetch on login for root
     lineinfile:
@@ -52,15 +43,6 @@
     lineinfile:
       path: /home/dylan/.bashrc
       line: 'neofetch --disable packages'
-
-  - name: Install speedtest-cli
-    pip: name=speedtest-cli
-    
-  - name: Install glances
-    pip: name=glances
-
-  - name: Install the latest version of jekyll using apt
-    apt: pkg=jekyll state=latest
 
   - name: Install cockpit
     apt:
