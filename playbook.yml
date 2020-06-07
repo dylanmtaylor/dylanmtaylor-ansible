@@ -1,6 +1,6 @@
 ---
 - name: Provision my website to a new server
-  hosts: dylanmtaylor-server
+  hosts: servers
   remote_user: root
 
   roles:
