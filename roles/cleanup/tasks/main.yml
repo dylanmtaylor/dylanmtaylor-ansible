@@ -5,3 +5,8 @@
 
   - name: Make sure unattended-upgrades started and enabled
     service: name=unattended-upgrades state=started enabled=yes
+
+  - name: Remove "cloud-init" package
+    apt:
+      name: cloud-init
+      state: absent
