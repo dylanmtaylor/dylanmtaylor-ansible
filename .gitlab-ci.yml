@@ -1,5 +1,5 @@
 # This simple GitLab CI file checks out and deploys my Ansible playbook
-image: ubuntu:18.04
+image: ubuntu:latest
 
 before_script:
   - apt-get update
