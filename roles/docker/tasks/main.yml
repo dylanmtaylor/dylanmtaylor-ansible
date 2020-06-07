@@ -1,10 +1,7 @@
 ---
-  - name: Install packages
+  - name: Install python3 and pip packages (dependencies)
     apt:
       pkg:
-        - wget
-        - curl
-        - firewalld
         - python3
         - python3-pip
       state: latest
@@ -20,9 +17,6 @@
     
   - name: Install docker python module
     pip: name=docker state=latest
-
-  - name: Start firewalld
-    service: name=firewalld state=started enabled=yes
 
   - name: Start Docker
     service: name=docker state=started enabled=yes
