@@ -4,7 +4,6 @@
       pkg:
         - lubuntu-desktop
         - xorg
-        - tigervnc-standalone-server
         - firefox
         - baobab
         - file-roller
