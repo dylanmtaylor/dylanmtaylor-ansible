@@ -10,6 +10,12 @@
   - name: Ensure directory for website exists
     file: path=/var/www/dylanmtaylor.com/html state=directory
 
+  - name: Create a symbolic link for /files
+    file:
+      src: "/var/www/files.dylanmtaylor.com/html/"
+      dest: "/var/www/dylanmtaylor.com/html/files"
+      state: link
+
   - name: Retrieve latest version of website files
     unarchive:
       src: https://gitlab.com/dylanmtaylor/dylanmtaylor.gitlab.io/-/jobs/artifacts/master/download?job=build_blog
