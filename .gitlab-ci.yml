@@ -3,7 +3,7 @@ image: archlinux:latest
 
 before_script:
   - pacman -Sy
-  - pacman -S ansible git rsync
+  - pacman --noconfirm -S ansible git rsync
   - mkdir ~/.ssh
   - echo "$PRIVATE_KEY" > ~/.ssh/id_rsa
   - chown -R $USER:$USER ~/.ssh
