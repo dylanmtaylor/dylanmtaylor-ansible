@@ -16,3 +16,6 @@
 
   - name: Set dylan's shell to bash
     command: chsh -s /bin/bash dylan
+
+-   name: Make sure hostname is set to dylanmtaylor.com
+    hostname: name=dylanmtaylor.com
