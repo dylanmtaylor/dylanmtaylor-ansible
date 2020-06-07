@@ -2,7 +2,6 @@
   - name: Install packages
     apt:
       pkg:
-        - git
         - wget
         - curl
         - firewalld

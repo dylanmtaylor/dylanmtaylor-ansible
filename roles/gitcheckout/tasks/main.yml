@@ -1,4 +1,7 @@
 ---
+  - name: Make sure that git is installed
+    apt: pkg=git state=latest
+
   - name: Clear out existing website files
     file:
       state: absent
@@ -22,3 +25,12 @@
          version=HEAD
          update=yes
          force=yes
+
+  - name: Make sure that /var/www has appropriate permissions for Docker to be able to read the files
+    file:
+      path: /var/www/
+      state: directory
+      recurse: yes
+      owner: root
+      group: root
+      mode: '0755'
