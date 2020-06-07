@@ -26,7 +26,10 @@
     template: src=panel.conf dest=/home/dylan/.config/lxqt/panel.conf owner=dylan
 
   - name: Set new_cursors value to false
-    command: sed -e 's/^new_cursors=true/new_cursors=false/g' -i /etc/xrdp/xrdp.ini
+    replace:
+      path: /etc/xrdp/xrdp.ini
+      regexp: '^new_cursors=true'
+      replace: 'new_cursors=false'
 
   - name: Start xrdp
     service: name=xrdp state=started enabled=yes
