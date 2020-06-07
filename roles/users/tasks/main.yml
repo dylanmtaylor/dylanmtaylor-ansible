@@ -14,7 +14,7 @@
       comment: "Dylan Taylor"
       uid: 1000
       shell: /bin/bash
-      groups: admin,sudo,dylan
+      groups: sudo,dylan
       append: yes
       password: ''
 
