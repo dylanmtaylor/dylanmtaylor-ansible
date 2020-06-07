@@ -1,21 +1,22 @@
 ---
+  - name: Make sure hostname is set correctly
+    hostname: name=dylanmtaylor.com
+
   - name: Copy my public SSH key for root user
     authorized_key: user=root key="{{ lookup('file', './files/authorized_keys') }}"
 
   - name: Add group 'dylan'
     group: name=dylan state=present
 
-  - name: Add non-root user 'dylan'
-    user: name=dylan comment="Dylan Taylor" uid=1000 group=dylan password=''
-
-  - name: Add 'dylan' to sudo group (system administrator)
-    command: usermod -aG sudo dylan
+  - name: Add the user 'dylan' with admin rights and a bash shell
+    user:
+      name: dylan
+      comment: "Dylan Taylor"
+      uid: 1000
+      shell: /bin/bash
+      groups: admin,sudo,dylan
+      append: yes
+      password: ''
 
   - name: Copy my public SSH key for non-root user 'dylan'
     authorized_key: user=dylan key="{{ lookup('file', './files/authorized_keys') }}"
-
-  - name: Set dylan's shell to bash
-    command: chsh -s /bin/bash dylan
-
-  - name: Make sure hostname is set correctly
-    hostname: name=dylanmtaylor.com
