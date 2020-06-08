@@ -13,7 +13,7 @@
   - name: Create a symbolic link for /files
     file:
       src: "/var/www/files.dylanmtaylor.com/html/"
-      dest: "/var/www/dylanmtaylor.com/html/files"
+      dest: "/var/www/dylanmtaylor.com/html/public/files"
       state: link
 
   - name: Retrieve latest version of website files
