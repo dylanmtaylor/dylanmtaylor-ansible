@@ -18,7 +18,7 @@
 
   - name: Retrieve latest version of website files
     unarchive:
-      src: https://gitlab.com/dylanmtaylor/dylanmtaylor.gitlab.io/-/jobs/artifacts/master/download?job=build_blog
+      src: https://gitlab.com/dylanmtaylor/dylanmtaylor.gitlab.io/-/jobs/artifacts/master/download?job=pages
       dest: /var/www/dylanmtaylor.com/html/
       remote_src: yes
          
