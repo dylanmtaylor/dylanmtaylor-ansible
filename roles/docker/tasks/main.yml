@@ -130,5 +130,5 @@
       restart_policy: 'always'
       env:
         VIRTUAL_HOST: 'blog.dylanmtaylor.com,blog.dylanmtaylor.local'
-        REDIRECT: 'https://dylanmtaylor.com/pages/blog/'
+        REDIRECT: 'https://dylanmtaylor.com/blog/'
         
