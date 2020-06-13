@@ -41,7 +41,7 @@
       
   - name: Pull nginx-php-fpm image
     docker_image:
-      name: 'trafex/alpine-nginx-php7:latest'
+      name: 'richarvey/nginx-php-fpm:latest'
       source: pull
 
   - name: Restart service docker, in all cases
@@ -63,7 +63,7 @@
   - name: Run main website
     docker_container:
       name: 'www-dylanmtaylor-com'
-      image: 'trafex/alpine-nginx-php7:latest'
+      image: 'richarvey/nginx-php-fpm:latest'
       state: 'started'
       restart_policy: 'always'
       env:
@@ -76,7 +76,7 @@
   - name: Run apps website
     docker_container:
       name: 'apps-dylanmtaylor-com'
-      image: 'trafex/alpine-nginx-php7:latest'
+      image: 'richarvey/nginx-php-fpm:latest'
       state: 'started'
       restart_policy: 'always'
       env:
@@ -90,7 +90,7 @@
   - name: Run fwc website
     docker_container:
       name: 'fwc-dylanmtaylor-com'
-      image: 'trafex/alpine-nginx-php7:latest'
+      image: 'richarvey/nginx-php-fpm:latest'
       state: 'started'
       restart_policy: 'always'
       env:
