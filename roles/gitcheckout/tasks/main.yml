@@ -51,3 +51,4 @@
       src: "/var/www/html/"
       dest: "/var/www/dylanmtaylor.com/html/public/pages"
       state: link
+      force: yes
