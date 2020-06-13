@@ -21,6 +21,13 @@
       src: "/var/www/files.dylanmtaylor.com/html/"
       dest: "/var/www/dylanmtaylor.com/html/public/files"
       state: link
+      
+  - name: Create a symbolic link for /pages
+    file:
+      src: "/var/www/dylanmtaylor.com/html/public/"
+      dest: "/var/www/dylanmtaylor.com/html/public/pages"
+      state: link
+
 
   - name: Ensure directory for resume exists
     file: path=/root/Dylan-Resume state=directory
