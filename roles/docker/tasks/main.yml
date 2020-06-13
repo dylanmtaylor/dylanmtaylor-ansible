@@ -26,7 +26,7 @@
 
   - name: Pull Nginx image
     docker_image:
-      name: nginx
+      name: nginx:alpine
       source: pull
 
   - name: Pull Nginx proxy image
