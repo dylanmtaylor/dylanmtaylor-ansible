@@ -109,7 +109,7 @@
   - name: Run files website
     docker_container:
       name: 'files-dylanmtaylor-com'
-      image: 'nginx'
+      image: 'nginx:alpine'
       state: 'started'
       restart_policy: 'always'
       env:
