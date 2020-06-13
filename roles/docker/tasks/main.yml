@@ -31,7 +31,7 @@
 
   - name: Pull Nginx proxy image
     docker_image:
-      name: jwilder/nginx-proxy
+      name: jwilder/nginx-proxy:alpine
       source: pull
 
   - name: Pull redirect image
