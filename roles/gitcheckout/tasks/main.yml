@@ -21,12 +21,11 @@
       src: "/var/www/files.dylanmtaylor.com/html/"
       dest: "/var/www/dylanmtaylor.com/html/public/files"
       state: link
-      
-  - name: Create a symbolic link for /pages
+
+  - name: Prevent crazy recursion when setting permissions
     file:
-      src: "/var/www/dylanmtaylor.com/html/public/"
-      dest: "/var/www/dylanmtaylor.com/html/public/pages"
-      state: link
+      path: "/var/www/dylanmtaylor.com/html/public/pages"
+      state: absent
 
   - name: Ensure directory for resume exists
     file: path=/root/Dylan-Resume state=directory
@@ -46,3 +45,9 @@
       owner: root
       group: root
       mode: '0755'
+      
+  - name: Create a symbolic link for /pages
+    file:
+      src: "/var/www/dylanmtaylor.com/html/public/"
+      dest: "/var/www/dylanmtaylor.com/html/public/pages"
+      state: link
