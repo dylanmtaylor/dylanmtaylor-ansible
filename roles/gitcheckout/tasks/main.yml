@@ -48,6 +48,6 @@
       
   - name: Create a symbolic link for /pages
     file:
-      src: "/var/www/dylanmtaylor.com/html/public/"
+      src: "/var/www/html/"
       dest: "/var/www/dylanmtaylor.com/html/public/pages"
       state: link
