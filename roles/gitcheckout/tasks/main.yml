@@ -28,7 +28,6 @@
       dest: "/var/www/dylanmtaylor.com/html/public/pages"
       state: link
 
-
   - name: Ensure directory for resume exists
     file: path=/root/Dylan-Resume state=directory
 
