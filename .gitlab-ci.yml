@@ -8,6 +8,7 @@ stages:
 before_script:
   - pacman -Sy
   - pacman --noconfirm -S ansible git rsync openssh
+  - ansible-galaxy collection install ansible.posix
   - mkdir ~/.ssh
   - echo "$PRIVATE_KEY" > ~/.ssh/id_rsa
   - chown -R $USER:$USER ~/.ssh
