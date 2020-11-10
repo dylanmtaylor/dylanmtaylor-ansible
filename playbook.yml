@@ -1,7 +1,8 @@
 ---
 - name: Provision my website to a new server
   hosts: servers
-  remote_user: root
+  remote_user: root # ubuntu on AWS
+  become: yes
 
   roles:
     - users
