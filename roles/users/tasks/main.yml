@@ -12,7 +12,6 @@
     user:
       name: dylan
       comment: "Dylan Taylor"
-      uid: 1000
       shell: /bin/bash
       groups: sudo,dylan
       append: yes
