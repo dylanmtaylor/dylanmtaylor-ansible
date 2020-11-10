@@ -7,35 +7,35 @@
     service: name=firewalld state=started enabled=yes
 
   - name: Allow ssh in the dmz zone
-    firewalld:
+    ansible.posix.firewalld:
       zone: dmz
       service: ssh
       permanent: true
       state: enabled
 
   - name: Allow http in the dmz zone
-    firewalld:
+    ansible.posix.firewalld:
       zone: dmz
       service: http
       permanent: true
       state: enabled
 
   - name: Allow https in the dmz zone
-    firewalld:
+    ansible.posix.firewalld:
       zone: dmz
       service: https
       permanent: true
       state: enabled
 
   - name: Allow cockpit in the dmz zone
-    firewalld:
+    ansible.posix.firewalld:
       zone: dmz
       port: 9090/tcp
       permanent: true
       state: enabled
 
   - name: Allow rdp in the dmz zone
-    firewalld:
+    ansible.posix.firewalld:
       zone: dmz
       port: 3389/tcp
       permanent: true
