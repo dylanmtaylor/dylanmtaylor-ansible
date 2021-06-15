@@ -41,7 +41,7 @@
       
   - name: Pull nginx-php-fpm image
     docker_image:
-      name: 'richarvey/nginx-php-fpm:latest'
+      name: 'richarvey/nginx-php-fpm:1.10.3'
       source: pull
 
   - name: Restart service docker, in all cases
