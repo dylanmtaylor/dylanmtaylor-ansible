@@ -63,7 +63,7 @@
   - name: Run main website
     docker_container:
       name: 'www-dylanmtaylor-com'
-      image: 'richarvey/nginx-php-fpm:latest'
+      image: 'richarvey/nginx-php-fpm:1.10.3'
       state: 'started'
       restart_policy: 'always'
       env:
@@ -76,7 +76,7 @@
   - name: Run apps website
     docker_container:
       name: 'apps-dylanmtaylor-com'
-      image: 'richarvey/nginx-php-fpm:latest'
+      image: 'richarvey/nginx-php-fpm:1.10.3'
       state: 'started'
       restart_policy: 'always'
       env:
@@ -90,7 +90,7 @@
   - name: Run fwc website
     docker_container:
       name: 'fwc-dylanmtaylor-com'
-      image: 'richarvey/nginx-php-fpm:latest'
+      image: 'richarvey/nginx-php-fpm:1.10.3'
       state: 'started'
       restart_policy: 'always'
       env:
