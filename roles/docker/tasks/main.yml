@@ -36,7 +36,7 @@
 
   - name: Pull redirect image
     docker_image:
-      name: 'cusspvz/redirect:latest'
+      name: 'ajoergensen/web-redirect:latest'
       source: pull
       
   - name: Pull nginx-php-fpm image
@@ -115,20 +115,24 @@
   - name: Run git website
     docker_container:
       name: 'git-dylanmtaylor-com'
-      image: 'cusspvz/redirect:latest'
+      image: 'ajoergensen/web-redirect:latest'
       state: 'started'
       restart_policy: 'always'
       env:
-        VIRTUAL_HOST: 'git.dylanmtaylor.com,git.dylanmtaylor.local'
-        REDIRECT: 'https://gitlab.com/dylanmtaylor'
+        VIRTUAL_HOST: 'git.dylanmtaylor.com'
+        REDIRECT_SCHEME: 'https'
+        REDIRECT_TARGET: 'gitlab.com'
+        REDIRECT_PATH: '/dylanmtaylor'
         
   - name: Run blog website
     docker_container:
       name: 'blog-dylanmtaylor-com'
-      image: 'cusspvz/redirect:latest'
+      image: 'ajoergensen/web-redirect:latest'
       state: 'started'
       restart_policy: 'always'
       env:
         VIRTUAL_HOST: 'blog.dylanmtaylor.com,blog.dylanmtaylor.local'
-        REDIRECT: 'https://dylanmtaylor.com/blog'
+        REDIRECT_SCHEME: 'https'
+        REDIRECT_TARGET: 'dylanmtaylor.com'
+        REDIRECT_PATH: '/blog'
         
