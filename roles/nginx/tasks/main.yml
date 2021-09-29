@@ -1,16 +1,7 @@
 --- 
   - name: Prevent unattended-upgrades from failing the run
     service: name=unattended-upgrades state=stopped enabled=yes
-
-  - name: Install xetex packages for resume generation and rsync
-    apt:
-      pkg:
-        - rsync
-        - texlive-xetex
-        - texlive-fonts-recommended
-        - texlive-font-utils
-      state: latest
-      update_cache: yes
+    when: ansible_facts['os_family'] == "Debian"
 
   - name: Make directory for website contents
     file: path=/var/www/dylanmtaylor.com/html state=directory mode=0755

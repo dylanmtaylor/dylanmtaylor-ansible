@@ -17,6 +17,6 @@
     cron: name="periodically update apps subdomain files" minute="*/15" job="docker exec -it apps-dylanmtaylor-com /usr/bin/git pull 2>&1"
 
   - name: Create cron job to update my resume
-    cron: name="periodically update my resume" minute="*/5" job="cd /root/Dylan-Resume; git reset --hard HEAD^; git pull >/dev/null 2>&1; xelatex --output-directory=/var/www/files.dylanmtaylor.com/html/ dylan-resume.tex; ls /var/www/files.dylanmtaylor.com/html/"
+    cron: name="periodically update my resume" minute="*/5" job="cd /root/Dylan-Resume; git reset --hard HEAD^; git pull >/dev/null 2>&1; bash docker-resume-builder.sh"
 
 
