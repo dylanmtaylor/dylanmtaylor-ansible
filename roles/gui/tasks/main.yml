@@ -16,6 +16,7 @@
 
   - name: Set default target to graphical
     command: systemctl set-default graphical.target
+    when: ansible_facts['os_family'] == "Debian"
 
   - name: root .xsession file
     template: src=xsession dest=/root/.xsession owner=root
@@ -34,6 +35,8 @@
       path: /etc/xrdp/xrdp.ini
       regexp: '^new_cursors=true'
       replace: 'new_cursors=false'
+    when: ansible_facts['os_family'] == "Debian"
 
   - name: Start xrdp
     service: name=xrdp state=started enabled=yes
+    when: ansible_facts['os_family'] == "Debian"
