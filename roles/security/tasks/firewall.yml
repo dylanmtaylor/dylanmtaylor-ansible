@@ -4,6 +4,10 @@
     apt: name=firewalld state=latest
     when: ansible_facts['os_family'] == "Debian"
 
+  - name: Install the firewalld service
+    yum: name=firewalld state=latest
+    when: ansible_facts['os_family'] == "RedHat"
+
   - name: Make sure that the firewalld service is active (and enabled on boot)
     service: name=firewalld state=started enabled=yes
 
