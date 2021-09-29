@@ -1,6 +1,17 @@
 ---
-  - name: Make sure that git is installed
-    apt: pkg=git state=latest
+  - name: Debian -- Make sure that git and unzip are installed
+    apt:
+      pkg:
+        - git
+        - unzip
+    when: ansible_facts['os_family'] == "Debian"
+
+  - name: Red Hat -- Make sure that git and unzip are installed
+    yum:
+      pkg:
+        - git
+        - unzip
+    when: ansible_facts['os_family'] == "RedHat"
 
   - name: Clear out existing website files
     file:

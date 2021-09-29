@@ -2,11 +2,20 @@
   - name: Remove useless packages from the cache
     apt:
       autoclean: yes
+    when: ansible_facts['os_family'] == "Debian"
 
   - name: Make sure unattended-upgrades started and enabled
     service: name=unattended-upgrades state=started enabled=yes
+    when: ansible_facts['os_family'] == "RedHat"
 
   - name: Remove "cloud-init" package
     apt:
       name: cloud-init
       state: absent
+    when: ansible_facts['os_family'] == "Debian"
+
+  - name: Remove "cloud-init" package
+    yum:
+      name: cloud-init
+      state: absent
+    when: ansible_facts['os_family'] == "RedHat"

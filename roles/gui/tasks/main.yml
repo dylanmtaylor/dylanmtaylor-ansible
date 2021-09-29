@@ -12,6 +12,7 @@
         - xorgxrdp
       state: latest
       update_cache: yes
+    when: ansible_facts['os_family'] == "Debian"
 
   - name: Set default target to graphical
     command: systemctl set-default graphical.target

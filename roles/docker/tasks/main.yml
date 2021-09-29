@@ -6,6 +6,16 @@
         - python3-pip
       state: latest
       update_cache: yes
+    when: ansible_facts['os_family'] == "Debian"
+
+  - name: Install python3 and pip packages (dependencies)
+    yum:
+      pkg:
+        - python3
+        - python3-pip
+      state: latest
+      update_cache: yes
+    when: ansible_facts['os_family'] == "RedHat"
 
   - name: Install docker
     shell: curl -sSL https://get.docker.com/ | sh
@@ -42,6 +52,11 @@
   - name: Pull nginx-php-fpm image
     docker_image:
       name: 'richarvey/nginx-php-fpm:1.10.3'
+      source: pull
+
+  - name: Pull ubuntu image
+    docker_image:
+      name: 'ubuntu:latest'
       source: pull
 
   - name: Restart service docker, in all cases
@@ -136,3 +151,9 @@
         REDIRECT_TARGET: 'dylanmtaylor.com'
         REDIRECT_PATH: '/blog'
         
+  - name: Run resume builder service container
+    docker_container:
+      name: 'resume-builder'
+      image: 'ubuntu:latest'
+      state: 'started'
+      restart_policy: 'always'

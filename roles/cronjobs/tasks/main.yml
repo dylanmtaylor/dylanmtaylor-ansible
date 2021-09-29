@@ -1,6 +1,11 @@
 ---
-  - name: Enable the crond service at boot time
+  - name: Debian -- Enable the cron service at boot time
     service: name=cron state=started enabled=yes
+    when: ansible_facts['os_family'] == "Debian"
+
+  - name: Red Hat -- Enable the crond service at boot time
+    service: name=crond state=started enabled=yes
+    when: ansible_facts['os_family'] == "RedHat"
 
   - name: Create cron job to update website contents
     cron: name="periodically update website contents" minute="*/5" job="curl -Ls https://gitlab.com/dylanmtaylor/dylanmtaylor.gitlab.io/-/jobs/artifacts/master/download?job=pages > /tmp/site.zip && unzip -o /tmp/site.zip -d /var/www/dylanmtaylor.com/html/ >/dev/null 2>&1"

@@ -8,7 +8,7 @@
   - name: Add group 'dylan'
     group: name=dylan state=present
 
-  - name: Add the user 'dylan' with admin rights and a bash shell
+  - name: Debian -- Add the user 'dylan' with admin rights and a bash shell
     user:
       name: dylan
       comment: "Dylan Taylor"
@@ -16,6 +16,17 @@
       groups: sudo,dylan
       append: yes
       password: ''
+    when: ansible_facts['os_family'] == "Debian"
+
+  - name: Red Hat -- Add the user 'dylan' with admin rights and a bash shell
+    user:
+      name: dylan
+      comment: "Dylan Taylor"
+      shell: /bin/bash
+      groups: wheel,dylan
+      append: yes
+      password: ''
+    when: ansible_facts['os_family'] == "RedHat"
 
   - name: Copy my public SSH key for non-root user 'dylan'
     authorized_key: user=dylan key="{{ lookup('file', './files/authorized_keys') }}"

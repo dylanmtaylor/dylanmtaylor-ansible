@@ -33,16 +33,19 @@
         - wget
       state: latest
       update_cache: yes
+    when: ansible_facts['os_family'] == "Debian"
 
   - name: Enable neofetch on login for root
     lineinfile:
       path: /root/.bashrc
       line: '#neofetch --disable packages'
+    when: ansible_facts['os_family'] == "Debian"
 
   - name: Enable neofetch on login for dylan
     lineinfile:
       path: /home/dylan/.bashrc
       line: 'neofetch --disable packages'
+    when: ansible_facts['os_family'] == "Debian"
 
   - name: Install cockpit
     apt:
@@ -53,6 +56,18 @@
         - cockpit-storaged
       state: latest
       update_cache: yes
+    when: ansible_facts['os_family'] == "Debian"
+
+  - name: Install cockpit
+    yum:
+      pkg:
+        - cockpit
+        - cockpit-networkmanager
+        - cockpit-packagekit
+        - cockpit-storaged
+      state: latest
+      update_cache: yes
+    when: ansible_facts['os_family'] == "RedHat"
 
   - name: Enable cockpit
     systemd:
@@ -63,3 +78,4 @@
   - name: Remove useless packages from the cache
     apt:
       autoclean: yes
+    when: ansible_facts['os_family'] == "Debian"
