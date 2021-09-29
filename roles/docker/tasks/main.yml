@@ -134,7 +134,7 @@
       state: 'started'
       restart_policy: 'always'
       env:
-        VIRTUAL_HOST: 'git.dylanmtaylor.com'
+        VIRTUAL_HOST: 'git.dylanmtaylor.com,git.dylanmtaylor.local'
         REDIRECT_SCHEME: 'https'
         REDIRECT_TARGET: 'gitlab.com'
         REDIRECT_PATH: '/dylanmtaylor'
