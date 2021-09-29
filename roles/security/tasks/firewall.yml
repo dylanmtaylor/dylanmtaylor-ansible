@@ -1,10 +1,10 @@
 ---
 
-  - name: Install the firewalld service
+  - name: Debian -- Install the firewalld service
     apt: name=firewalld state=latest
     when: ansible_facts['os_family'] == "Debian"
 
-  - name: Install the firewalld service
+  - name: Red Hat -- Install the firewalld service
     yum: name=firewalld state=latest
     when: ansible_facts['os_family'] == "RedHat"
 
