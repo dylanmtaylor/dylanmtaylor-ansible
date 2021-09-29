@@ -47,7 +47,7 @@
       line: 'neofetch --disable packages'
     when: ansible_facts['os_family'] == "Debian"
 
-  - name: Install cockpit
+  - name: Debian -- Install cockpit
     apt:
       pkg:
         - cockpit
@@ -58,7 +58,7 @@
       update_cache: yes
     when: ansible_facts['os_family'] == "Debian"
 
-  - name: Install cockpit
+  - name: Red Hat -- Install cockpit
     yum:
       pkg:
         - cockpit

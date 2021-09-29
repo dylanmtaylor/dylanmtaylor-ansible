@@ -2,6 +2,11 @@
   - name: Configure sshd for additional security
     template: src=sshd_config dest=/etc/ssh/sshd_config
 
-  - name: Restart the sshd service (and make sure it's enabled on boot)
+  - name: Debian -- Restart the ssh service (and make sure it's enabled on boot)
     service: name=ssh state=restarted enabled=yes
+    when: ansible_facts['os_family'] == "Debian"
+
+  - name: RedHat -- Restart the sshd service (and make sure it's enabled on boot)
+    service: name=sshd state=restarted enabled=yes
+    when: ansible_facts['os_family'] == "RedHat"
 
